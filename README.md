@@ -9,11 +9,11 @@ A tree select [React] component.
 
 ## Install
 ```bash
-npm install react-list --save
+npm install react-do-tree-select --save
 
 # or
 
-yarn install react-list
+yarn install react-do-tree-select
 ```
 react-do-tree-select depends on React
 
