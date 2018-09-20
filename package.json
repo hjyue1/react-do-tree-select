@@ -1,0 +1,33 @@
+{
+  "name": "react-do-tree-select",
+  "version": "1.0.6",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib"
+  },
+  "author": "hjyue1@163.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hjyue1/react-do-tree-select"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react-virtualized": "^9.20.1"
+  },
+  "peerDependencies": {
+    "react": "16"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  }
+}

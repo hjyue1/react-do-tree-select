@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'doTreeselect';
+  src:  url('fonts/doTreeselect.eot?kgipsf');
+  src:  url('fonts/doTreeselect.eot?kgipsf#iefix') format('embedded-opentype'),
+    url('fonts/doTreeselect.ttf?kgipsf') format('truetype'),
+    url('fonts/doTreeselect.woff?kgipsf') format('woff'),
+    url('fonts/doTreeselect.svg?kgipsf#doTreeselect') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="do-icon-"], [class*=" do-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'doTreeselect' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.do-icon-search:before {
+  content: "\e8b6";
+}
+.do-icon-search2:before {
+  content: "\e908";
+}

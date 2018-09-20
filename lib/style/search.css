@@ -1,0 +1,42 @@
+
+@import "./font.css";
+.do-SearchBox {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.do-SearchBox-input {
+    position: relative;
+    display: inline-block;
+    padding: 4px 24px 4px 7px;
+    width: 100%;
+    height: 32px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(0,0,0,.65);
+    background-color: #fff;
+    background-image: none;
+    border: none;
+    border-bottom: 1px solid #d9d9d9;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    box-sizing: border-box;
+}
+.do-SearchBox-input-suffix {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 2;
+    line-height: 0;
+    color: rgba(0,0,0,.65);
+    right: 7px;
+    cursor: pointer;
+}
+.do-SearchBox-input-suffix:hover {
+    color: #4093fc
+}
+.do-SearchBox-input{
+    outline:none;
+}
