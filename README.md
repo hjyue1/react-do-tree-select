@@ -1,5 +1,4 @@
 # react-do-tree-select
----------------
 A tree select [React] component.
 
 
