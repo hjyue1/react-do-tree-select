@@ -167,8 +167,6 @@ export default [
 | halfChain | The selection of child nodes affects the semi-selection of parent nodes | bool | true |
 | initCheckedList | Initialize check multiple lists | array | - |
 
-
-
 ## License
 
 *react-do-tree-select* is available under the MIT License.
