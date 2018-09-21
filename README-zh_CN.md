@@ -6,7 +6,7 @@
 ![NPM license](https://img.shields.io/npm/l/react-do-tree-select.svg?style=flat)
 [![NPM total downloads](https://img.shields.io/npm/dt/react-do-tree-select.svg?style=flat)](https://www.npmjs.com/package/react-do-tree-select?minimal=true)
 
-[English document]
+[English document](./README.md)
 
 ## 安装
 ```bash
@@ -138,9 +138,9 @@ export default [
 
 | 参数 | 说明 | 类型 | 默认值 | 是否必需 |
 | -------- | ----------- | ---- | ------- | -------- |
-| treeData | 组件的源数据 [配置](#treeData)   | array | - | true |
+| treeData | 组件的源数据 [配置](#treeData) | array | - | true |
 | showlevel | 树组件展开的层级  | number | 0 |
-| checkbox | 复选功能 [配置](#checkbox)  | object | - |
+| checkbox | 复选功能 [配置](#checkbox) | object | - |
 | wrapperClassName | 扩展类名 | string | - |
 | selectVal | 初始化选中的条目 | string | - |
 | style | 自定义样式 | object | {width: 320, height: 800} |
@@ -152,8 +152,8 @@ export default [
 ### treeData
 | 参数 | 说明 | 类型 | 默认值 | 是否必需 |
 | -------- | ----------- | ---- | ------- | -------- |
-| title | 标题  | string | - |
-| value | 唯一标识  | string | - |
+| title | 标题 | string | - |
+| value | 唯一标识 | string | - |
 | disabled | 是否禁用 | bool | false |
 | children | 子级 | array | - |
 
@@ -161,11 +161,10 @@ export default [
 
 | 参数 | 说明 | 类型 | 默认值 | 是否必需 |
 | -------- | ----------- | ---- | ------- | -------- |
-| enable | 复选功能的开关  | bool | false |
-| parentChain | 子级影响父级联动  | bool | true |
-| childrenChain | 父级影响子级联动 | bool | true |
+| enable | 复选功能的开关 | bool | false |
+| parentChain | 子级影响父级联动 | bool | true |
+| childrenChain | 父级影响子级联动 | bool | true |
 | halfChain | 子级节点被全部选中影响父级节点半选 | bool | true |
 | initCheckedList | 初始化勾选的条目 | array | - |
 
 [React]: https://github.com/facebook/react
-[English document]: https://github.com/hjyue1/react-do-tree-select/blob/master/README.md

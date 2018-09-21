@@ -1,12 +1,11 @@
 # react-do-tree-select
 A tree select [React] component.
 
-
 [![NPM version](https://img.shields.io/npm/v/react-do-tree-select.svg?style=flat)](https://www.npmjs.com/package/react-do-tree-select)
 ![NPM license](https://img.shields.io/npm/l/react-do-tree-select.svg?style=flat)
 [![NPM total downloads](https://img.shields.io/npm/dt/react-do-tree-select.svg?style=flat)](https://www.npmjs.com/package/react-do-tree-select?minimal=true)
 
-[中文文档]
+[简体中文](./README-zh_CN.md)
 
 ## Install
 ```bash
@@ -138,9 +137,9 @@ export default [
 
 | property | description | type | default | required |
 | -------- | ----------- | ---- | ------- | -------- |
-| treeData | source data [config](#treeData)   | array | - | true |
+| treeData | source data [config](#treeData) | array | - | true |
 | showlevel | Hierarchy of expansion  | number | 0 |
-| checkbox | Check box config [config](#checkbox)  | object | - |
+| checkbox | Check box config [config](#checkbox) | object | - |
 | wrapperClassName | Extended class name | string | - |
 | selectVal | Selected items | string | - |
 | style | Custom style | object | {width: 320, height: 800} |
@@ -152,8 +151,8 @@ export default [
 ### treeData
 | property | description | type | default | required |
 | -------- | ----------- | ---- | ------- | -------- |
-| title | Item title  | string | - |
-| value | The unique identity of the item  | string | - |
+| title | Item title | string | - |
+| value | The unique identity of the item | string | - |
 | disabled | Whether the item is disabled | bool | false |
 | children | Item children | array | - |
 
@@ -161,8 +160,8 @@ export default [
 
 | property | description | type | default | required |
 | -------- | ----------- | ---- | ------- | -------- |
-| enable | Switch the check box  | bool | false |
-| parentChain | child Affects parent nodes  | bool | true |
+| enable | Switch the check box | bool | false |
+| parentChain | child Affects parent nodes | bool | true |
 | childrenChain | parent Affects child nodes | bool | true |
 | halfChain | The selection of child nodes affects the semi-selection of parent nodes | bool | true |
 | initCheckedList | Initialize check multiple lists | array | - |
@@ -173,4 +172,3 @@ License
 
 
 [React]: https://github.com/facebook/react
-[中文文档]: https://github.com/hjyue1/react-do-tree-select/blob/master/README-CH.md
