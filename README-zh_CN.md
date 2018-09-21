@@ -22,6 +22,7 @@ react-do-tree-select 基于 React
 
 下面是一个简单的例子
 
+<img src="https://github.com/hjyue1/react-do-tree-select/blob/master/react-do-tree-select.gif?raw=true" alt="react-do-tree-select" />
 
 ```js
 import React from 'react';

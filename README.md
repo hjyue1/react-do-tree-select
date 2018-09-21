@@ -21,6 +21,7 @@ react-do-tree-select depends on React
 
 Here's simple example to get you started. 
 
+<img src="https://github.com/hjyue1/react-do-tree-select/blob/master/react-do-tree-select.gif?raw=true" alt="react-do-tree-select" />
 
 ```js
 import React from 'react';
