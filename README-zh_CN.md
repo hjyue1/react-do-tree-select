@@ -18,7 +18,8 @@ yarn install react-do-tree-select
 ```
 react-do-tree-select 基于 React
 
-##例子
+## 例子
+
 下面是一个简单的例子
 
 
@@ -139,7 +140,7 @@ export default [
 | 参数 | 说明 | 类型 | 默认值 | 是否必需 |
 | -------- | ----------- | ---- | ------- | -------- |
 | treeData | 组件的源数据 [配置](#treeData) | array | - | true |
-| showlevel | 树组件展开的层级  | number | 0 |
+| showlevel | 树组件展开的层级 | number | 0 |
 | checkbox | 复选功能 [配置](#checkbox) | object | - |
 | wrapperClassName | 扩展类名 | string | - |
 | selectVal | 初始化选中的条目 | string | - |
