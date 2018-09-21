@@ -169,7 +169,7 @@ export default [
 
 
 
-##License
+## License
 
 *react-do-tree-select* is available under the MIT License.
 
