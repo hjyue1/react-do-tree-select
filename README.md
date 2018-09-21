@@ -7,6 +7,11 @@ A tree select [React] component.
 
 [简体中文](./README-zh_CN.md)
 
+
+## Features
+- Support a large amount of data (100,000 pieces of data were tested for stability)
+- Support half-selection (even if the child nodes are all selected, the check of parent level will not be affected)
+
 ## Install
 ```bash
 npm install react-do-tree-select --save
@@ -26,6 +31,7 @@ Here's simple example to get you started.
 ```js
 import React from 'react';
 import TreeSelect from 'react-do-tree-select';
+import Data from './Data';
 
 class MyComponent extends React.Component {
     constructor(props) {
@@ -57,35 +63,31 @@ class MyComponent extends React.Component {
         console.log(val);
     }
 
-
-  render() {
-    return (
-        const { treeData, showlevel } = this.state;
-        const checkbox = {
-            enable: true,
-            parentChain: true,              // child Affects parent nodes;
-            childrenChain: true,            // parent Affects child nodes;
-            halfChain: true,                // The selection of child nodes affects the semi-selection of parent nodes.
-            initCheckedList: []             // Initialize check multiple lists
-        }
+    render() {
         return (
-            <div className="App">
-                <TreeSelect
-                    treeData = {treeData}
-                    style = {{
-                        width: 320,
-                        height: 600,
-                    }}
-                    selectVal = {this.state.selectVal}
-                    onSelect = {this.onSelect}
-                    onChecked = {this.onChecked}
-                    checkbox = {checkbox}
-                    showlevel = {showlevel}
-                    customTitleRender = {this.customTitleRender}/>
-            </div>
+            const { treeData, showlevel } = this.state;
+            const checkbox = {
+                enable: true,
+                parentChain: true,              // child Affects parent nodes;
+                childrenChain: true,            // parent Affects child nodes;
+                halfChain: true,                // The selection of child nodes affects the semi-selection of parent nodes.
+                initCheckedList: []             // Initialize check multiple lists
+            }
+            return (
+                <div className="App">
+                    <TreeSelect
+                        treeData            = {treeData}
+                        style               = {{width: 320,height: 600}}
+                        selectVal           = {this.state.selectVal}
+                        onSelect            = {this.onSelect}
+                        onChecked           = {this.onChecked}
+                        checkbox            = {checkbox}
+                        showlevel           = {showlevel}
+                        customTitleRender   = {this.customTitleRender}/>
+                </div>
+            );
         );
-    );
-  }
+    }
 }
 ```
 ./Data.js

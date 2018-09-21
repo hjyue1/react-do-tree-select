@@ -228,7 +228,7 @@ class TreeSelect extends Component {
         if (!item) 
             return
         if (item.parentVal && !treeDataMap[item.parentVal].isExpand) {
-            // 父级借点属性为不展开，子节点不应该显示
+            // 父级节点属性为不展开，子节点不应该显示
             throw new Error('this item should not be show')
         }
         const _style = {

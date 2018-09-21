@@ -8,6 +8,10 @@
 
 [English document](./README.md)
 
+## 特性
+- 支持大量的数据（ 测试十万条数据稳定 ）
+- 支持半选功能（ 即使子节点全选，也不会影响父级的勾选 ）
+
 ## 安装
 ```bash
 npm install react-do-tree-select --save
@@ -58,35 +62,31 @@ class MyComponent extends React.Component {
         console.log(val);
     }
 
-
-  render() {
-    return (
-        const { treeData, showlevel } = this.state;
-        const checkbox = {
-            enable: true,
-            parentChain: true,              // child Affects parent nodes;
-            childrenChain: true,            // parent Affects child nodes;
-            halfChain: true,                // The selection of child nodes affects the semi-selection of parent nodes.
-            initCheckedList: []             // Initialize check multiple lists
-        }
+    render() {
         return (
-            <div className="App">
-                <TreeSelect
-                    treeData = {treeData}
-                    style = {{
-                        width: 320,
-                        height: 600,
-                    }}
-                    selectVal = {this.state.selectVal}
-                    onSelect = {this.onSelect}
-                    onChecked = {this.onChecked}
-                    checkbox = {checkbox}
-                    showlevel = {showlevel}
-                    customTitleRender = {this.customTitleRender}/>
-            </div>
+            const { treeData, showlevel } = this.state;
+            const checkbox = {
+                enable: true,
+                parentChain: true,              // child Affects parent nodes;
+                childrenChain: true,            // parent Affects child nodes;
+                halfChain: true,                // The selection of child nodes affects the semi-selection of parent nodes.
+                initCheckedList: []             // Initialize check multiple lists
+            }
+            return (
+                <div className="App">
+                    <TreeSelect
+                        treeData            = {treeData}
+                        style               = {{width: 320,height: 600}}
+                        selectVal           = {this.state.selectVal}
+                        onSelect            = {this.onSelect}
+                        onChecked           = {this.onChecked}
+                        checkbox            = {checkbox}
+                        showlevel           = {showlevel}
+                        customTitleRender   = {this.customTitleRender}/>
+                </div>
+            );
         );
-    );
-  }
+    }
 }
 ```
 ./Data.js
