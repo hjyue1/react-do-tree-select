@@ -1,7 +1,7 @@
-
 // 判断是否为空数组
 export const isEmptyArray = (arr) => {
-    if (!arr) return true
+    if (!arr) 
+        return true
     if (arr instanceof Array) {
         return arr.length <= 0
     }
@@ -16,7 +16,6 @@ export const addArrayItem = (arr, node) => {
     }
 }
 
-
 // 删除数组中条目
 export const delArrayItem = (arr, node) => {
     const idx = arr.indexOf(node)
@@ -29,18 +28,20 @@ export const delArrayItem = (arr, node) => {
 export const generateTreeDataMap = (parent, treeData, defaultConfig, level = 0, _map = {}, _idList = [], _renderIdList = []) => {
     const map = _map
     const _level = level
-    const { showlevel } = defaultConfig
+    const {showlevel} = defaultConfig
     let idList = _idList
     let renderIdList = _renderIdList
     treeData.forEach((item) => {
         if (map[item.value]) {
             throw new Error('The value must be unique')
         }
-        const isExpand = showlevel >= level 
+        const isExpand = showlevel >= level
         if (isExpand) {
             renderIdList.push(item.value)
             if (!isEmptyArray(item.children) && showlevel === level) {
-                item.children.forEach((_item) => renderIdList.push(_item.value))
+                item
+                    .children
+                    .forEach((_item) => renderIdList.push(_item.value))
             }
         }
 
@@ -52,20 +53,18 @@ export const generateTreeDataMap = (parent, treeData, defaultConfig, level = 0, 
             isExpand,
             checkStatus: {
                 checked: false,
-                halfChecked: false,
+                halfChecked: false
             },
             parentVal: (parent && parent.value) || null
         }
         if (!isEmptyArray(item.children)) {
-            map[item.value].children = item.children.map((_item) => _item.value)
+            map[item.value].children = item
+                .children
+                .map((_item) => _item.value)
             generateTreeDataMap(item, item.children, defaultConfig, _level + 1, map, idList, renderIdList)
         }
     })
-    return {
-        map,
-        idList,
-        renderIdList
-    }
+    return {map, idList, renderIdList}
 }
 
 /**
@@ -75,36 +74,33 @@ export const generateTreeDataMap = (parent, treeData, defaultConfig, level = 0, 
  * @param {[HashMap]}  TreeDataMap  [以ID为键值的Hash表]
  * @param  {[Object]}  checkbox     [配置]
  * @return {[Object]}               [节点的选中状态]
- * 
+ *
  */
 export const childCheckedStatus = (children, TreeDataMap, checkbox) => {
     // 子级节点被全部选中影响父级节点半选
-    const { halfChain } = checkbox
+    const {halfChain} = checkbox
 
     let checked = !halfChain;
     let halfChecked = false;
-    children.forEach((item)=>{
-        const { checkStatus } = TreeDataMap[item];
-        if (checkStatus.halfChecked || checkStatus.checked){
+    children.forEach((item) => {
+        const {checkStatus} = TreeDataMap[item];
+        if (checkStatus.halfChecked || checkStatus.checked) {
             halfChecked = true;
         }
-        if (!checkStatus.checked){
+        if (!checkStatus.checked) {
             checked = false;
         }
     })
 
-    if(checked && halfChecked) {
-        if(halfChain) {
+    if (checked && halfChecked) {
+        if (halfChain) {
             checked = false;
-        }else {
+        } else {
             halfChecked = false;
         }
-        
+
     }
-    return {
-        checked,
-        halfChecked
-    };
+    return {checked, halfChecked};
 }
 
 /**
@@ -117,21 +113,19 @@ export const childCheckedStatus = (children, TreeDataMap, checkbox) => {
  * @return {[null]}   null
  */
 export const parentChain = (TreeDataMap, parentNode, config, checkedList) => {
-    if (parentNode){
+    if (parentNode) {
         const checkStatus = childCheckedStatus(parentNode.children, TreeDataMap, config)
-        Object.assign(parentNode, {
-            checkStatus
-        }); 
+        Object.assign(parentNode, {checkStatus});
 
         // 加入/移除 选中的父节点Value列表
-        if(checkStatus.checked) {
+        if (checkStatus.checked) {
             addArrayItem(checkedList, parentNode.value)
-        }else {
+        } else {
             delArrayItem(checkedList, parentNode.value)
         }
 
         // 递归
-        if ( "undefined" !== typeof parentNode.parentVal ){
+        if ("undefined" !== typeof parentNode.parentVal) {
             parentChain(TreeDataMap, TreeDataMap[parentNode.parentVal], config, checkedList);
         }
     }
@@ -147,23 +141,22 @@ export const parentChain = (TreeDataMap, parentNode, config, checkedList) => {
  * @return {[null]}     null
  */
 export const childrenChain = (TreeDataMap, children, checked, checkedList) => {
-    if(!children) {
+    if (!children) {
         // console.log('子节点不存在')
         return
     }
     children.forEach((id) => {
         let node = TreeDataMap[id];
-        if(node.disabled) {
-            // 被禁用的无法选中
-            // return
-        }else {
+        if (node.disabled) {
+            // 被禁用的无法选中 return
+        } else {
             node.checkStatus = {
                 checked: checked,
                 halfChecked: false
             }
-            if(checked) {
+            if (checked) {
                 addArrayItem(checkedList, node.value)
-            }else {
+            } else {
                 delArrayItem(checkedList, node.value)
             }
         }
@@ -173,7 +166,6 @@ export const childrenChain = (TreeDataMap, children, checked, checkedList) => {
     })
 }
 
-
 /**
  * [findAllChildren 查找指定的所有子节点]
  * @method findAllChildren
@@ -181,7 +173,7 @@ export const childrenChain = (TreeDataMap, children, checked, checkedList) => {
  * @param  {[HashMap]} TreeDataMap  [以ID为键值的Hash表，方便快速查找]
  * @param  {[Array]}  _arr          [递归返回值]
  * @return {[Array]}  arr          [子节点数组]
- * 
+ *
  */
 export const findAllChildren = (children, treeDataMap, _arr = []) => {
     const arr = _arr
@@ -202,15 +194,15 @@ export const findAllChildren = (children, treeDataMap, _arr = []) => {
  * @param  {[HashMap]} treeDataMap   [以ID为键值的Hash表，方便快速查找]
  * @param  {[String]]}  val            [搜索条件]
  * @return {[Boolean]}               [true-满足 / false-不满足]
- * 
+ *
  */
 export const filterListCheckChildren = (_children, treeDataMap, val) => {
-    return _children.some((item)=>{
-        const { title, value, children } = treeDataMap[item];
-        if( title.indexOf(val) > -1 ) {
+    return _children.some((item) => {
+        const {title, value, children} = treeDataMap[item];
+        if (title.indexOf(val) > -1) {
             return true
         }
-        if(!isEmptyArray(children)) {
+        if (!isEmptyArray(children)) {
             return filterListCheckChildren(children, treeDataMap, val)
         }
         return false
@@ -224,25 +216,48 @@ export const filterListCheckChildren = (_children, treeDataMap, val) => {
  * @param  {[HashMap]}  treeDataMap              [以ID为键值的Hash表，方便快速查找]
  * @param  {[String]}   val                      [搜索条件]
  * @param  {[Array]}    filterIdList             [过滤后的列表]
- * @return {[Array]}    _filterIdList           
- * 
+ * @return {[Array]}    _filterIdList
+ *
  */
-export const getFilterIdList = (idList, treeDataMap, val, filterIdList = [], ) => {
+export const getFilterIdList = (idList, treeDataMap, val, filterIdList = [],) => {
     let _filterIdList = filterIdList;
     idList.forEach((item) => {
-        const { title, value, children, parentVal, isExpand } = treeDataMap[item];
-
-        if (parentVal) {
-            treeDataMap[parentVal] = {
-                ...treeDataMap[parentVal],
-                isExpand: true
-            }
-        }
+        const {title, value, children, parentVal} = treeDataMap[item];
 
         if (title.indexOf(val) > -1 || (!isEmptyArray(children) && filterListCheckChildren(children, treeDataMap, val))) {
-            console.log(value)
+            // console.log(value)
+
+            if (parentVal) {
+                // 父级展开isExpand
+                treeDataMap[parentVal] = {
+                    ...treeDataMap[parentVal],
+                    isExpand: true
+                }
+            }
             return _filterIdList.push(value)
         }
     })
     return _filterIdList
+}
+
+/**
+ * [treeDataMapCheckRenderIdList 根据treeDataMap检查RenderIdList中是否有父级不展开的情况]
+ * @method treeDataMapCheckRenderIdList
+ * @param  {[HashMap]}  treeDataMap             [以ID为键值的Hash表，方便快速查找]
+ * @param  {[Array]}    renderIdList            [渲染的IdList]
+ * @return {[Array]}    _renderIdList
+ *
+ */
+export const treeDataMapCheckRenderIdList = (treeDataMap, renderIdList) => {
+    const _renderIdList = renderIdList.filter((id) => {
+        const parentVal = treeDataMap[id] && treeDataMap[id].parentVal
+        if (parentVal) {
+            const parentItem = treeDataMap[parentVal];
+            if (parentItem && !parentItem.isExpand) {
+                return false
+            }
+        }
+        return true
+    })
+    return _renderIdList
 }

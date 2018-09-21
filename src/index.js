@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { List } from 'react-virtualized';
-import { isEmptyArray, generateTreeDataMap, delArrayItem, childrenChain, parentChain, findAllChildren, getFilterIdList } from './tool';
+import { isEmptyArray, generateTreeDataMap, delArrayItem, childrenChain, parentChain, findAllChildren, getFilterIdList, treeDataMapCheckRenderIdList } from './tool';
 import './style/index.css';
 import SearchBox from './searchBox'
 import PropTypes from 'prop-types';
@@ -23,15 +23,16 @@ class TreeSelect extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            treeData: [],       // 树数据
-            treeDataMap: {},    // 树数据映射表
-            idList: [],         // 所有列表
-            renderIdList: [],   // 渲染的列表
-            checkedList: [],    // 选中的列表
-            searchVal: '',      // 搜索的值
-            selectVal: '',      // 选中的条目
-            checkbox: {},       // 复选框的配置
-            showlevel: 0,       // 展开的层级
+            treeData: [],           // 树数据
+            treeDataMap: {},        // 树数据映射表
+            idList: [],             // 所有列表
+            renderIdList: [],       // 渲染的列表
+            checkedList: [],        // 选中的列表
+            searchVal: '',          // 搜索的值
+            selectVal: '',          // 选中的条目
+            checkbox: {},           // 复选框的配置
+            showlevel: 0,           // 展开的层级
+            updateListState: false  // 强制更新List组件
         }
         this.treeNodeRender = this.treeNodeRender.bind(this);
         this.onClickRow = this.onClickRow.bind(this);
@@ -86,7 +87,7 @@ class TreeSelect extends Component {
      */
     onClickRow(item, e) {
         const { onSelect } = this.props;
-        const { renderIdList, treeDataMap } = this.state
+        const { renderIdList, treeDataMap, updateListState } = this.state
         const { value } = item
         let _renderIdList = renderIdList.concat([])
         // const disabled = item.disabled && (!item.children || !isEmptyArray(item.children))
@@ -120,7 +121,8 @@ class TreeSelect extends Component {
         this.setState({
             renderIdList: _renderIdList,
             treeDataMap,
-            selectVal: value
+            selectVal: value,
+            updateListState: !updateListState
         }, () => {
             onSelect && onSelect(item, e)
         })
@@ -136,7 +138,7 @@ class TreeSelect extends Component {
     onChecked(item, e) {
         e && e.stopPropagation();
         const { checkbox, onChecked } = this.props
-        const { treeDataMap, checkedList } = this.state
+        const { treeDataMap, checkedList, updateListState } = this.state
         const { checkStatus, value } = item
         const { checked } = checkStatus
         const _checkbox = checkbox || defaultProps.checkbox
@@ -174,7 +176,8 @@ class TreeSelect extends Component {
         _checkbox.childrenChain && childrenChain(_treeDataMap, item.children, _checked, _checkedList)
         this.setState({
             treeDataMap: _treeDataMap,
-            checkedList: _checkedList
+            checkedList: _checkedList,
+            updateListState: !updateListState
         }, () => {
             e && onChecked && onChecked(this.state.checkedList, e)
         })
@@ -202,6 +205,10 @@ class TreeSelect extends Component {
         const idx = renderIdList[index]
         const item = treeDataMap[idx];
         if (!item) return
+        if (item.parentVal && !treeDataMap[item.parentVal].isExpand) {
+            // 父级借点属性为不展开，子节点不应该显示
+            throw new Error('this item should not be show')
+        }
         const _style = {
             ...style,
             paddingLeft: (defaultProps.paddingLeftLevel * item.level)
@@ -265,16 +272,20 @@ class TreeSelect extends Component {
             _filterIdList = this.cacheIdList
             this.cacheIdList = null
         }
+
+        _filterIdList = treeDataMapCheckRenderIdList(_filterIdList)
+
         this.setState({
             searchVal: val,
             renderIdList: _filterIdList,
-            treeDataMap: _treeDataMap
+            treeDataMap: _treeDataMap,
+            updateListState: !updateListState
         })
     }
 
     render() {
         const { style, wrapperClassName } = this.props;
-        const { treeDataMap, renderIdList, searchVal, checkedList, selectVal } = this.state;
+        const { treeDataMap, renderIdList, searchVal, checkedList, selectVal, updateListState } = this.state;
         const _style = style || defaultProps.style;
         const prefixClassName = defaultProps.prefixClassName;
         const _className = `${prefixClassName}-TreeSelect ${wrapperClassName || ''}`
@@ -293,6 +304,7 @@ class TreeSelect extends Component {
                         treeDataMap={treeDataMap}
                         checkedList={checkedList}
                         selectVal={selectVal}
+                        updateListState={updateListState}
                     />
                 </div>
             </div>
