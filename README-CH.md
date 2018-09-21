@@ -1,14 +1,14 @@
 # react-do-tree-select
-A tree select [React] component.
+一个选择树[React]组件.
 
 
 [![NPM version](https://img.shields.io/npm/v/react-do-tree-select.svg?style=flat)](https://www.npmjs.com/package/react-do-tree-select)
 ![NPM license](https://img.shields.io/npm/l/react-do-tree-select.svg?style=flat)
 [![NPM total downloads](https://img.shields.io/npm/dt/react-do-tree-select.svg?style=flat)](https://www.npmjs.com/package/react-do-tree-select?minimal=true)
 
-[中文文档]
+[English document]
 
-## Install
+## 安装
 ```bash
 npm install react-do-tree-select --save
 
@@ -16,10 +16,10 @@ npm install react-do-tree-select --save
 
 yarn install react-do-tree-select
 ```
-react-do-tree-select depends on React
+react-do-tree-select 基于 React
 
-##Examples
-Here's simple example to get you started.
+##例子
+下面是一个简单的例子
 
 
 ```js
@@ -136,41 +136,36 @@ export default [
 
 ## API
 
-| property | description | type | default | required |
+| 参数 | 说明 | 类型 | 默认值 | 是否必需 |
 | -------- | ----------- | ---- | ------- | -------- |
-| treeData | source data [config](#treeData)   | array | - | true |
-| showlevel | Hierarchy of expansion  | number | 0 |
-| checkbox | Check box config [config](#checkbox)  | object | - |
-| wrapperClassName | Extended class name | string | - |
-| selectVal | Selected items | string | - |
-| style | Custom style | object | {width: 320, height: 800} |
-| onSelect | Click the event callback function | function( item, event ) | - |
-| onChecked | Check the callback function for the event | function( items, event ) | - |
-| customIconRender | The custom icon is extended after the entry | function(item) : DOM | - |
-| customTitleRender | Displays the title of the entry | function(item) : DOM | - |
+| treeData | 组件的源数据 [配置](#treeData)   | array | - | true |
+| showlevel | 树组件展开的层级  | number | 0 |
+| checkbox | 复选功能 [配置](#checkbox)  | object | - |
+| wrapperClassName | 扩展类名 | string | - |
+| selectVal | 初始化选中的条目 | string | - |
+| style | 自定义样式 | object | {width: 320, height: 800} |
+| onSelect | 条目被点击的回调函数 | function( item, event ) | - |
+| onChecked | 勾选的回调函数 | function( items, event ) | - |
+| customIconRender | 自定义图标，位置在标题后面渲染 | function(item) : DOM | - |
+| customTitleRender | 自定义标题 | function(item) : DOM | - |
 
 ### treeData
-| property | description | type | default | required |
+| 参数 | 说明 | 类型 | 默认值 | 是否必需 |
 | -------- | ----------- | ---- | ------- | -------- |
-| title | Item title  | string | - |
-| value | The unique identity of the item  | string | - |
-| disabled | Whether the item is disabled | bool | false |
-| children | Item children | array | - |
+| title | 标题  | string | - |
+| value | 唯一标识  | string | - |
+| disabled | 是否禁用 | bool | false |
+| children | 子级 | array | - |
 
 ### checkbox
 
-| property | description | type | default | required |
+| 参数 | 说明 | 类型 | 默认值 | 是否必需 |
 | -------- | ----------- | ---- | ------- | -------- |
-| enable | Switch the check box  | bool | false |
-| parentChain | child Affects parent nodes  | bool | true |
-| childrenChain | parent Affects child nodes | bool | true |
-| halfChain | The selection of child nodes affects the semi-selection of parent nodes | bool | true |
-| initCheckedList | Initialize check multiple lists | array | - |
-
-License
-
-*react-do-tree-select* is available under the MIT License.
-
+| enable | 复选功能的开关  | bool | false |
+| parentChain | 子级影响父级联动  | bool | true |
+| childrenChain | 父级影响子级联动 | bool | true |
+| halfChain | 子级节点被全部选中影响父级节点半选 | bool | true |
+| initCheckedList | 初始化勾选的条目 | array | - |
 
 [React]: https://github.com/facebook/react
-[中文文档]: https://github.com/hjyue1/react-do-tree-select/blob/master/README-CH.md
+[English document]: https://github.com/hjyue1/react-do-tree-select/blob/master/README.md

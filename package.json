@@ -1,6 +1,6 @@
 {
   "name": "react-do-tree-select",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,16 @@
     "url": "https://github.com/hjyue1/react-do-tree-select"
   },
   "license": "MIT",
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-component",
+    "tree-select",
+    "tree",
+    "select",
+    "virtual-tree",
+    "virtual-tree-select"
+  ],
   "dependencies": {
     "prop-types": "^15.6.2",
     "react-virtualized": "^9.20.1"
