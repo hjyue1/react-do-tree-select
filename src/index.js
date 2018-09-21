@@ -273,7 +273,7 @@ class TreeSelect extends Component {
             this.cacheIdList = null
         }
 
-        _filterIdList = treeDataMapCheckRenderIdList(_filterIdList)
+        _filterIdList = treeDataMapCheckRenderIdList(_treeDataMap, _filterIdList)
 
         this.setState({
             searchVal: val,
