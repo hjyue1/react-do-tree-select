@@ -31,6 +31,7 @@ react-do-tree-select 基于 React
 ```js
 import React from 'react';
 import TreeSelect from 'react-do-tree-select';
+import Data from './Data';
 
 class MyComponent extends React.Component {
     constructor(props) {
