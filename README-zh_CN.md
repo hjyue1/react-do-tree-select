@@ -88,7 +88,7 @@ class MyComponent extends React.Component {
   }
 }
 ```
-Data.js
+./Data.js
 ```js
 export default [
     {

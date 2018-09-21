@@ -18,6 +18,7 @@ yarn install react-do-tree-select
 react-do-tree-select depends on React
 
 ##Examples
+
 Here's simple example to get you started.
 
 
@@ -86,7 +87,7 @@ class MyComponent extends React.Component {
   }
 }
 ```
-Data.js
+./Data.js
 ```js
 export default [
     {
