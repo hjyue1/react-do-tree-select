@@ -17,9 +17,9 @@ yarn install react-do-tree-select
 ```
 react-do-tree-select depends on React
 
-##Examples
+## Examples
 
-Here's simple example to get you started.
+Here's simple example to get you started. 
 
 
 ```js
