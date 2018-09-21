@@ -257,7 +257,7 @@ class TreeSelect extends Component {
     // 搜索框的回调函数
     onSearch(val) {
         let _filterIdList;
-        const { idList, treeDataMap, renderIdList } = this.state;
+        const { idList, treeDataMap, renderIdList, updateListState } = this.state;
         // 影响性能，直接修改Map值
         // const _treeDataMap = Object.assign({}, treeDataMap)
         const _treeDataMap = treeDataMap
