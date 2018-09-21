@@ -138,7 +138,7 @@ export default [
 | property | description | type | default | required |
 | -------- | ----------- | ---- | ------- | -------- |
 | treeData | source data [config](#treeData) | array | - | true |
-| showlevel | Hierarchy of expansion  | number | 0 |
+| showlevel | Hierarchy of expansion | number | 0 |
 | checkbox | Check box config [config](#checkbox) | object | - |
 | wrapperClassName | Extended class name | string | - |
 | selectVal | Selected items | string | - |
