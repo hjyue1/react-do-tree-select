@@ -25,6 +25,19 @@ export const delArrayItem = (arr, node) => {
 }
 
 // 生成树数据的map
+/**
+ * [generateTreeDataMap 检查子节点的选中情况]
+ * @method generateTreeDataMap
+ * @param  {[Object]}   parent              [父节点]
+ * @param  {[Array]}    treeData            [源数据]
+ * @param  {[Object]}   defaultConfig       [配置]
+ * @param  {[number]}   level               [展开级别]
+ * @param  {[Object]}   _map                [以ID为键值的Hash表]
+ * @param  {[Array]}    _idList             [所有的idList]
+ * @param  {[Array]}    _renderIdList       [渲染的IdList]
+ * @return {[Object]}               
+ *
+ */
 export const generateTreeDataMap = (parent, treeData, defaultConfig, level = 0, _map = {}, _idList = [], _renderIdList = []) => {
     const map = _map
     const _level = level
@@ -71,7 +84,7 @@ export const generateTreeDataMap = (parent, treeData, defaultConfig, level = 0, 
  * [childCheckedStatus 检查子节点的选中情况]
  * @method childCheckedStatus
  * @param  {[Array]}   children     [节点的子节点集合]
- * @param {[HashMap]}  TreeDataMap  [以ID为键值的Hash表]
+ * @param  {[HashMap]} TreeDataMap  [以ID为键值的Hash表]
  * @param  {[Object]}  checkbox     [配置]
  * @return {[Object]}               [节点的选中状态]
  *
