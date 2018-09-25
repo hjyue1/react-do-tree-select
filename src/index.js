@@ -4,6 +4,7 @@ import {
     isEmptyArray,
     generateTreeDataMap,
     delArrayItem,
+    delMapItem,
     childrenChain,
     parentChain,
     findAllChildren,
@@ -13,6 +14,7 @@ import {
 import './style/index.css';
 import SearchBox from './searchBox'
 import PropTypes from 'prop-types';
+import {Map} from 'core-js';
 
 const defaultProps = {
     style: {
@@ -40,7 +42,7 @@ class TreeSelect extends Component {
             treeDataMap: {},        // 树数据映射表
             idList: [],             // 所有列表
             renderIdList: [],       // 渲染的列表
-            checkedList: [],        // 选中的列表
+            checkedList: new Map(), // 勾选的Map列表
             searchVal: '',          // 搜索的值
             selectVal: '',          // 选中的条目
             checkbox: {},           // 复选框的配置
@@ -174,13 +176,13 @@ class TreeSelect extends Component {
         const _treeDataMap = treeDataMap
 
         const _checked = !checked;
-        const _checkedList = checkedList.concat([]);
+        const _checkedList = new Map(checkedList);
 
         // 处理勾选的value List
         if (_checked) {
-            _checkedList.push(value)
+            _checkedList.set(value, value)
         } else {
-            delArrayItem(_checkedList, value)
+            delMapItem(_checkedList, value)
         }
 
         // 处理treeDataMap的数据状态
@@ -201,7 +203,7 @@ class TreeSelect extends Component {
             checkedList: _checkedList,
             updateListState: !updateListState
         }, () => {
-            e && onChecked && onChecked(this.state.checkedList, e)
+            e && onChecked && onChecked(Array.from(this.state.checkedList.keys()), e)
         })
     }
 

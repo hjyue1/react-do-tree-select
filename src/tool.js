@@ -8,19 +8,28 @@ export const isEmptyArray = (arr) => {
     return true
 }
 
-// 把条目加入数组中并去重
-export const addArrayItem = (arr, node) => {
-    const idx = arr.indexOf(node)
-    if (idx === -1) {
-        arr.push(node);
-    }
-}
-
 // 删除数组中条目
 export const delArrayItem = (arr, node) => {
     const idx = arr.indexOf(node)
     if (idx > -1) {
         arr.splice(idx, 1);
+    }
+}
+
+// 把条目加入Map
+export const addMapItem = (arr, node) => {
+    // 这种写法影响性能
+    // const idx = arr.indexOf(node)
+    // if (idx === -1) {
+    //     arr.push(node);
+    // }
+    arr.set(node, node)
+}
+
+// 删除Map中条目
+export const delMapItem = (map, node) => {
+    if(map.has(node)){
+        map.delete(node)
     }
 }
 
@@ -132,9 +141,9 @@ export const parentChain = (TreeDataMap, parentNode, config, checkedList) => {
 
         // 加入/移除 选中的父节点Value列表
         if (checkStatus.checked) {
-            addArrayItem(checkedList, parentNode.value)
+            addMapItem(checkedList, parentNode.value)
         } else {
-            delArrayItem(checkedList, parentNode.value)
+            delMapItem(checkedList, parentNode.value)
         }
 
         // 递归
@@ -168,9 +177,9 @@ export const childrenChain = (TreeDataMap, children, checked, checkedList) => {
                 halfChecked: false
             }
             if (checked) {
-                addArrayItem(checkedList, node.value)
+                addMapItem(checkedList, node.value)
             } else {
-                delArrayItem(checkedList, node.value)
+                delMapItem(checkedList, node.value)
             }
         }
         if (node.children) {
