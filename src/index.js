@@ -319,7 +319,7 @@ class TreeSelect extends Component {
     }
 
     render() {
-        const {style, wrapperClassName} = this.props;
+        const {style, wrapperClassName, checkbox} = this.props;
         const {
             treeDataMap,
             renderIdList,
@@ -358,7 +358,8 @@ class TreeSelect extends Component {
                         treeDataMap={treeDataMap}
                         checkedList={checkedList}
                         selectVal={selectVal}
-                        updateListState={updateListState}/>
+                        updateListState={updateListState}
+                        checkbox={checkbox}/>
                 </div>
             </div>
         );
