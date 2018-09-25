@@ -104,6 +104,7 @@
 
 .do-TreeSelect .ReactVirtualized__List {
     outline: none;
+    overflow: auto !important;
 }
 
 .do-TreeSelect .ReactVirtualized__Grid__innerScrollContainer {

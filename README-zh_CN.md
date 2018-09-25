@@ -9,8 +9,11 @@
 [English document](./README.md)
 
 ## 特性
-- 支持大量的数据（ 测试十万条数据稳定 ）
+- 支持大量的数据（ 测试一百万条数据稳定 ）
 - 支持半选功能（ 即使子节点全选，也不会影响父级的勾选 ）
+
+## 演示
+- [online](https://hjyue1.github.io/react-do-tree-select/demo/modifyParams/)
 
 ## 安装
 ```bash

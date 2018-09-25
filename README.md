@@ -9,8 +9,12 @@ A tree select [React] component.
 
 
 ## Features
-- Support a large amount of data (100,000 pieces of data were tested for stability)
+- Support a large amount of data (1000,000 pieces of data were tested for stability)
 - Support half-selection (even if the child nodes are all selected, the check of parent level will not be affected)
+
+
+## Demo
+- [online](https://hjyue1.github.io/react-do-tree-select/demo/modifyParams/)
 
 ## Install
 ```bash
