@@ -3,7 +3,6 @@ import {List} from 'react-virtualized';
 import {
     isEmptyArray,
     generateTreeDataMap,
-    delArrayItem,
     delMapItem,
     childrenChain,
     parentChain,
@@ -14,7 +13,6 @@ import {
 import './style/index.css';
 import SearchBox from './searchBox'
 import PropTypes from 'prop-types';
-import {Map} from 'core-js';
 
 const defaultProps = {
     style: {
@@ -135,11 +133,20 @@ class TreeSelect extends Component {
             // 收缩
             if (!isEmptyArray(item.children)) {
                 // 找到children的所有子节点
+                let map = new Map()
+
+                _renderIdList.forEach((_item)=>{
+                    map.set(_item, _item)
+                })
+
                 const arr = findAllChildren(item.children, treeDataMap)
+
                 arr.forEach((_item) => {
                     treeDataMap[_item].isExpand = false;
-                    delArrayItem(_renderIdList, _item)
+                    map.delete(_item)
                 })
+
+                _renderIdList = Array.from(map.values())
             }
         }
 

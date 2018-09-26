@@ -8,14 +8,6 @@ export const isEmptyArray = (arr) => {
     return true
 }
 
-// 删除数组中条目
-export const delArrayItem = (arr, node) => {
-    const idx = arr.indexOf(node)
-    if (idx > -1) {
-        arr.splice(idx, 1);
-    }
-}
-
 // 把条目加入Map
 export const addMapItem = (arr, node) => {
     // 这种写法影响性能
