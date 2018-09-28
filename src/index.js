@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {List} from 'react-virtualized';
+import {List, AutoSizer} from 'react-virtualized';
 import {
     isEmptyArray,
     generateTreeDataMap,
@@ -356,19 +356,23 @@ class TreeSelect extends Component {
                     ..._style,
                     overflow: 'unset'
                 }}>
-                    <List
-                        width={_style.width}
-                        height={_style.height}
-                        rowCount={renderIdList.length}
-                        rowHeight={22}
-                        rowRenderer={this.treeNodeRender}
-                        overscanRowCount={20}
-                        autoContainerWidth={true}
-                        treeDataMap={treeDataMap}
-                        checkedList={checkedList}
-                        selectVal={selectVal}
-                        updateListState={updateListState}
-                        checkbox={checkbox}/>
+                    <AutoSizer>
+                        {({ height, width }) => (
+                            <List
+                                width={width}
+                                height={height}
+                                rowCount={renderIdList.length}
+                                rowHeight={22}
+                                rowRenderer={this.treeNodeRender}
+                                overscanRowCount={20}
+                                autoContainerWidth={true}
+                                treeDataMap={treeDataMap}
+                                checkedList={checkedList}
+                                selectVal={selectVal}
+                                updateListState={updateListState}
+                                checkbox={checkbox}/>
+                        )}
+                    </AutoSizer>
                 </div>
             </div>
         );
