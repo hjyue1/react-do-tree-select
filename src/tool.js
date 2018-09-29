@@ -42,16 +42,18 @@ export const delMapItem = (map, node) => {
 export const generateTreeDataMap = (parent, treeData, defaultConfig, level = 0, _map = {}, _idList = [], _renderIdList = []) => {
     const map = _map
     const _level = level
-    const {showlevel} = defaultConfig
+    const {showlevel, checkbox} = defaultConfig
+    const { initCheckedList } = checkbox
     let idList = _idList
     let renderIdList = _renderIdList
     treeData.forEach((item) => {
-        if (map[item.value]) {
+        const _value = item.value.toString()
+        if (map[_value]) {
             throw new Error('The value must be unique')
         }
         const isExpand = showlevel >= level
         if (isExpand) {
-            renderIdList.push(item.value)
+            renderIdList.push(_value)
             if (!isEmptyArray(item.children) && showlevel === level) {
                 item
                     .children
@@ -59,20 +61,20 @@ export const generateTreeDataMap = (parent, treeData, defaultConfig, level = 0, 
             }
         }
 
-        idList.push(item.value)
-
-        map[item.value] = {
+        idList.push(_value)
+        
+        map[_value] = {
             ...item,
             level: _level,
             isExpand,
             checkStatus: {
-                checked: false,
+                checked: initCheckedList.indexOf(_value) > -1,
                 halfChecked: false
             },
             parentVal: (parent && parent.value) || null
         }
         if (!isEmptyArray(item.children)) {
-            map[item.value].children = item
+            map[_value].children = item
                 .children
                 .map((_item) => _item.value)
             generateTreeDataMap(item, item.children, defaultConfig, _level + 1, map, idList, renderIdList)
@@ -84,23 +86,28 @@ export const generateTreeDataMap = (parent, treeData, defaultConfig, level = 0, 
 /**
  * [childCheckedStatus 检查子节点的选中情况]
  * @method childCheckedStatus
- * @param  {[Array]}   children     [节点的子节点集合]
- * @param  {[HashMap]} TreeDataMap  [以ID为键值的Hash表]
- * @param  {[Object]}  checkbox     [配置]
- * @return {[Object]}               [节点的选中状态]
+ * @param  {[Array]}    children        [节点的子节点集合]
+ * @param  {[HashMap]}  TreeDataMap     [以ID为键值的Hash表]
+ * @param  {[Object]}   checkbox        [配置]
+ * @param  {[Bool]}     isInit          [是否初始化时候触发的]
+ * @return {[Object]}                   [节点的选中状态]
  *
  */
 export const childCheckedStatus = (children, TreeDataMap, checkbox) => {
     // 子级节点被全部选中影响父级节点半选
     const {halfChain} = checkbox
-
+    // 开启半选功能 勾选默认为true
     let checked = !halfChain;
+    // 半选默认为false
     let halfChecked = false;
+
     children.forEach((item) => {
         const {checkStatus} = TreeDataMap[item];
+        // 该节点的半选或者勾选为true 
         if (checkStatus.halfChecked || checkStatus.checked) {
             halfChecked = true;
         }
+        // 有一个节点的勾选为false
         if (!checkStatus.checked) {
             checked = false;
         }
@@ -126,21 +133,27 @@ export const childCheckedStatus = (children, TreeDataMap, checkbox) => {
  * @param {[Array]}   checkedList  [选中复选框的Value列表]]]
  * @return {[null]}   null
  */
-export const parentChain = (TreeDataMap, parentNode, config, checkedList) => {
+export const parentChain = (TreeDataMap, parentNode, config, checkedList, isInit) => {
     if (parentNode) {
-        const checkStatus = childCheckedStatus(parentNode.children, TreeDataMap, config)
-        Object.assign(parentNode, {checkStatus});
+        
+        if(isInit && config.initCheckedList.some((item)=>item.toString() == parentNode.value)) {
+            // 如果是初始化状态触发的该函数，初始化勾选列表有当前节点 就不操作
+        }else {
+            const checkStatus = childCheckedStatus(parentNode.children, TreeDataMap, config, isInit)
+            Object.assign(parentNode, {checkStatus});
 
-        // 加入/移除 选中的父节点Value列表
-        if (checkStatus.checked) {
-            addMapItem(checkedList, parentNode.value)
-        } else {
-            delMapItem(checkedList, parentNode.value)
+            // 加入/移除 选中的父节点Value列表
+            if (checkStatus.checked) {
+                addMapItem(checkedList, parentNode.value)
+            } else {
+                delMapItem(checkedList, parentNode.value)
+            }
         }
+        
 
         // 递归
         if ("undefined" !== typeof parentNode.parentVal) {
-            parentChain(TreeDataMap, TreeDataMap[parentNode.parentVal], config, checkedList);
+            parentChain(TreeDataMap, TreeDataMap[parentNode.parentVal], config, checkedList, isInit);
         }
     }
 }

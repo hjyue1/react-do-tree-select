@@ -22,7 +22,7 @@ class SearchBox extends Component {
     }
 
     onKeyDown(e) {
-        const evt = window.event || e; 
+        const evt = e || window.event ; 
         if (evt.keyCode === 13){
             //回车事件
             this.clickSearchIcon()
