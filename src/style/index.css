@@ -135,8 +135,9 @@
     width: 14px;
     height: 14px;
 }
-.do-checkbox .disabled {
-    background-color: #f5f5f5;
+.do-TreeNode .do-checkbox .disabled {
+    background-color: #b8b8b8;
+    border-color: #b8b8b8;
 }
 .do-checkbox-inner {
     position: relative;

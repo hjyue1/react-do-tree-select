@@ -59,8 +59,12 @@ class TreeSelect extends Component {
         this.onSearch = this
             .onSearch
             .bind(this);
+        this.onCheckedInitCheckedList = this
+            .onCheckedInitCheckedList
+            .bind(this);
         this.cacheIdList = null;
     }
+
     static getDerivedStateFromProps(nextProps, prevState) {
         const defaultConfig = {
             showlevel: nextProps.showlevel || defaultProps.showlevel,
@@ -81,17 +85,46 @@ class TreeSelect extends Component {
         }
         return null
     }
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.treeData != this.state.treeData) {
-            const {checkbox, treeDataMap} = this.state;
-            const {initCheckedList} = checkbox;
-            if (!isEmptyArray(initCheckedList)) {
-                initCheckedList.forEach((_item) => {
-                    treeDataMap[_item] && this.onChecked(treeDataMap[_item])
-                })
-            }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.checkbox != this.state.checkbox) {
+            this.onCheckedInitCheckedList(this.state.checkbox)
         }
+    }
+
+    componentDidMount() {
+        this.onCheckedInitCheckedList(this.state.checkbox)
+    }
+
+    onCheckedInitCheckedList (checkbox) {
+        const {treeDataMap, updateListState, checkedList} = this.state;
+        const {initCheckedList} = checkbox;
+        const _checkedList = checkedList;
+        if (!isEmptyArray(initCheckedList)) {
+            initCheckedList.forEach((_item) => {
+                const treeItem = treeDataMap[_item]
+                if(!treeItem) {
+                    return
+                }
+                const { value } = treeItem
+                _checkedList.set(value, value)
+                // 处理treeDataMap的数据状态
+                treeDataMap[value] = {
+                    ...treeDataMap[value],
+                    checkStatus: {
+                        ...treeDataMap[value].checkStatus,
+                        checked: true,
+                        halfChecked: false
+                    }
+                }
+                checkbox.parentChain && parentChain(treeDataMap, treeDataMap[treeItem.parentVal], checkbox, _checkedList, true)
+            })
+        }
+        this.setState({
+            treeDataMap: treeDataMap,
+            checkedList: _checkedList,
+            updateListState: !updateListState
+        })
     }
 
     componentDidCatch(err) {
@@ -169,11 +202,10 @@ class TreeSelect extends Component {
      */
     onChecked(item, e) {
         e && e.stopPropagation();
-        const {checkbox, onChecked} = this.props
-        const {treeDataMap, checkedList, updateListState} = this.state
+        const {onChecked} = this.props
+        const {treeDataMap, checkedList, updateListState, checkbox} = this.state
         const {checkStatus, value} = item
         const {checked} = checkStatus
-        const _checkbox = checkbox || defaultProps.checkbox
         // 判断是否是禁用
         const disabled = item.disabled
         if (disabled) {
@@ -203,8 +235,8 @@ class TreeSelect extends Component {
         }
 
         // 处理复选框联动逻辑
-        _checkbox.parentChain && parentChain(_treeDataMap, _treeDataMap[item.parentVal], _checkbox, _checkedList)
-        _checkbox.childrenChain && childrenChain(_treeDataMap, item.children, _checked, _checkedList)
+        e && checkbox.parentChain && parentChain(_treeDataMap, _treeDataMap[item.parentVal], checkbox, _checkedList)
+        e && checkbox.childrenChain && childrenChain(_treeDataMap, item.children, _checked, _checkedList)
         this.setState({
             treeDataMap: _treeDataMap,
             checkedList: _checkedList,
@@ -270,7 +302,7 @@ class TreeSelect extends Component {
                         {!isEmptyArray(item.children) && <i className={`${item.isExpand && prefixClassName + '-expand'}`}></i>
 }
                     </div>
-                    {_checkbox.enable && <div
+                    {_checkbox.enable && !disabled && <div
                         onClick={(e) => this.onChecked(item, e)}
                         className={`${prefixClassName}-checkbox ${checkedClassName} ${halfCheckedClassName}`}>
                         <span
