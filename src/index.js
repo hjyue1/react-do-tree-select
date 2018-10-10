@@ -8,7 +8,8 @@ import {
     parentChain,
     findAllChildren,
     getFilterIdList,
-    treeDataMapCheckRenderIdList
+    treeDataMapCheckRenderIdList,
+    checkedCheckedList
 } from './tool';
 import './style/index.css';
 import SearchBox from './searchBox'
@@ -45,7 +46,8 @@ class TreeSelect extends Component {
             selectVal: '',          // 选中的条目
             checkbox: {},           // 复选框的配置
             showlevel: 0,           // 展开的层级
-            updateListState: false  // 强制更新List组件
+            updateListState: false, // 强制更新List组件
+            loading: true           // 加载中。。。
         }
         this.treeNodeRender = this
             .treeNodeRender
@@ -59,9 +61,6 @@ class TreeSelect extends Component {
         this.onSearch = this
             .onSearch
             .bind(this);
-        this.onCheckedInitCheckedList = this
-            .onCheckedInitCheckedList
-            .bind(this);
         this.cacheIdList = null;
     }
 
@@ -71,7 +70,10 @@ class TreeSelect extends Component {
             checkbox: nextProps.checkbox || defaultProps.checkbox
         }
         if (nextProps.treeData !== prevState.treeData) {
-            const {map, idList, renderIdList} = generateTreeDataMap({}, nextProps.treeData, defaultConfig)
+            const initCheckedList = new Map(defaultConfig.checkbox.initCheckedList.map((item)=>[item.toString(), item.toString()]))
+            const {map, idList, renderIdList, checkedList} = generateTreeDataMap({}, nextProps.treeData, defaultConfig, initCheckedList, prevState.checkedList)
+            checkedCheckedList(map, checkedList, defaultConfig.checkbox)
+            
             return {
                 treeData: nextProps.treeData,
                 value: nextProps.value,
@@ -80,53 +82,14 @@ class TreeSelect extends Component {
                 renderIdList: renderIdList,
                 selectVal: nextProps.selectVal,
                 checkbox: defaultConfig.checkbox,
-                showlevel: defaultConfig.showlevel
+                showlevel: defaultConfig.showlevel,
+                checkedList: checkedList,
+                loading: false,
             }
         }
         return null
     }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.checkbox != this.state.checkbox) {
-            this.onCheckedInitCheckedList(this.state.checkbox)
-        }
-    }
-
-    componentDidMount() {
-        this.onCheckedInitCheckedList(this.state.checkbox)
-    }
-
-    onCheckedInitCheckedList (checkbox) {
-        const {treeDataMap, updateListState, checkedList} = this.state;
-        const {initCheckedList} = checkbox;
-        const _checkedList = checkedList;
-        if (!isEmptyArray(initCheckedList)) {
-            initCheckedList.forEach((_item) => {
-                const treeItem = treeDataMap[_item]
-                if(!treeItem) {
-                    return
-                }
-                const { value } = treeItem
-                _checkedList.set(value, value)
-                // 处理treeDataMap的数据状态
-                treeDataMap[value] = {
-                    ...treeDataMap[value],
-                    checkStatus: {
-                        ...treeDataMap[value].checkStatus,
-                        checked: true,
-                        halfChecked: false
-                    }
-                }
-                checkbox.parentChain && parentChain(treeDataMap, treeDataMap[treeItem.parentVal], checkbox, _checkedList, true)
-            })
-        }
-        this.setState({
-            treeDataMap: treeDataMap,
-            checkedList: _checkedList,
-            updateListState: !updateListState
-        })
-    }
-
+    
     componentDidCatch(err) {
         console.log(err)
     }
@@ -279,7 +242,7 @@ class TreeSelect extends Component {
         const checkedClassName = item.checkStatus.checked
             ? `${prefixClassName}-checkbox-checked`
             : ''
-        const halfCheckedClassName = item.checkStatus.halfChecked
+        const halfCheckedClassName = !item.checkStatus.checked && item.checkStatus.halfChecked
             ? `${prefixClassName}-checkbox-halfChecked`
             : ''
         const disabled = item.disabled && (!item.children || !isEmptyArray(item.children))
@@ -367,11 +330,42 @@ class TreeSelect extends Component {
             searchVal,
             checkedList,
             selectVal,
-            updateListState
+            updateListState,
+            loading
         } = this.state;
         const _style = style || defaultProps.style;
         const prefixClassName = defaultProps.prefixClassName;
         const _className = `${prefixClassName}-TreeSelect ${wrapperClassName || ''}`
+        if(loading) {
+            return (
+                <div
+                    className={_className}
+                    style={{
+                    width: _style.width
+                }}>
+                    <div className="spinner">
+                        <div className="spinner-container container1">
+                            <div className="circle1"></div>
+                            <div className="circle2"></div>
+                            <div className="circle3"></div>
+                            <div className="circle4"></div>
+                        </div>
+                        <div className="spinner-container container2">
+                            <div className="circle1"></div>
+                            <div className="circle2"></div>
+                            <div className="circle3"></div>
+                            <div className="circle4"></div>
+                        </div>
+                        <div className="spinner-container container3">
+                            <div className="circle1"></div>
+                            <div className="circle2"></div>
+                            <div className="circle3"></div>
+                            <div className="circle4"></div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
         return (
             <div
                 className={_className}
