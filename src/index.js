@@ -70,9 +70,11 @@ class TreeSelect extends Component {
             checkbox: nextProps.checkbox || defaultProps.checkbox
         }
         if (nextProps.treeData !== prevState.treeData) {
-            const initCheckedList = new Map(defaultConfig.checkbox.initCheckedList.map((item)=>[item.toString(), item.toString()]))
+            const initCheckedListVal = defaultConfig.checkbox.enable ? defaultConfig.checkbox.initCheckedList.map((item)=>[item.toString(), item.toString()]) : []
+            const initCheckedList =  new Map(initCheckedListVal)
             const {map, idList, renderIdList, checkedList} = generateTreeDataMap({}, nextProps.treeData, defaultConfig, initCheckedList, prevState.checkedList)
-            checkedCheckedList(map, checkedList, defaultConfig.checkbox)
+            
+            defaultConfig.checkbox.enable && checkedCheckedList(map, checkedList, defaultConfig.checkbox)
             
             return {
                 treeData: nextProps.treeData,
