@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for tool.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> tool.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.44% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>114/122</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.88% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>73/85</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>24/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.44% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>114/122</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">117x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// 判断是否为空数组
+export const isEmptyArray = (arr) =&gt; {
+    if (!arr) 
+        return true
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (arr instanceof Array) {
+        return arr.length &lt;= 0
+    }
+<span class="cstat-no" title="statement not covered" >    return true</span>
+}
+&nbsp;
+// 把条目加入Map
+export const addMapItem = (arr, node) =&gt; {
+    // 这种写法影响性能
+    // const idx = arr.indexOf(node)
+    // if (idx === -1) {
+    //     arr.push(node);
+    // }
+    arr.set(node, node)
+}
+&nbsp;
+// 删除Map中条目
+export const delMapItem = (map, node) =&gt; {
+    if(map.has(node)){
+        map.delete(node)
+    }
+}
+&nbsp;
+// 生成树数据的map
+/**
+ * [generateTreeDataMap 检查子节点的选中情况]
+ * @method generateTreeDataMap
+ * @param  {[Object]}   parent              [父节点]
+ * @param  {[Array]}    treeData            [源数据]
+ * @param  {[Object]}   defaultConfig       [配置]
+ * @param  {[Map]}      initCheckedList     [初始化勾选列表]
+ * @param  {[Map]}      _checkedList        [勾选列表]
+ * @param  {[number]}   level               [展开级别]
+ * @param  {[Object]}   _map                [以ID为键值的Hash表]
+ * @param  {[Array]}    _idList             [所有的idList]
+ * @param  {[Array]}    _renderIdList       [渲染的IdList]
+ * @return {[Object]}               
+ *
+ */
+export const generateTreeDataMap = (parent, treeData, defaultConfig, initCheckedList, _checkedList, level = 0, _map = {}, _idList = [], _renderIdList = []) =&gt; {
+    const map = _map
+    const _level = level
+    const {showlevel, checkbox} = defaultConfig
+    let idList = _idList
+    let renderIdList = _renderIdList
+    const checkedList = _checkedList
+    
+    treeData.forEach((item) =&gt; {
+        const _value = item.value.toString()
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (map[_value]) {
+<span class="cstat-no" title="statement not covered" >            throw new Error('The value must be unique')</span>
+        }
+        const isExpand = showlevel &gt;= level
+        if (isExpand) {
+            renderIdList.push(_value)
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!isEmptyArray(item.children) &amp;&amp; showlevel === level) {
+                item
+                    .children
+                    .forEach((_item) =&gt; renderIdList.push(_item.value))
+            }
+        }
+&nbsp;
+        idList.push(_value)
+        const checked = initCheckedList.has(item.value)
+        checked &amp;&amp; checkedList.set(item.value, item.value)
+        map[_value] = {
+            ...item,
+            level: _level,
+            isExpand,
+            checkStatus: {
+                checked: checked,
+                halfChecked: false
+            },
+            parentVal: (parent &amp;&amp; parent.value) || null
+        }
+        if (!isEmptyArray(item.children)) {
+            map[_value].children = item
+                .children
+                .map((_item) =&gt; _item.value)
+            generateTreeDataMap(item, item.children, defaultConfig, initCheckedList, checkedList, _level + 1, map, idList, renderIdList)
+        }
+    })
+    return {map, idList, renderIdList, checkedList}
+}
+&nbsp;
+/**
+ * [childCheckedStatus 检查子节点的选中情况]
+ * @method childCheckedStatus
+ * @param  {[Array]}    children        [节点的子节点集合]
+ * @param  {[HashMap]}  TreeDataMap     [以ID为键值的Hash表]
+ * @param  {[Object]}   checkbox        [配置]
+ * @param  {[Bool]}     isInit          [是否初始化时候触发的]
+ * @return {[Object]}                   [节点的选中状态]
+ *
+ */
+export const childCheckedStatus = (children, TreeDataMap, checkbox) =&gt; {
+    // 子级节点被全部选中影响父级节点半选
+    const {halfChain} = checkbox
+    // 开启半选功能 勾选默认为true
+    let checked = !halfChain;
+    // 半选默认为false
+    let halfChecked = false;
+&nbsp;
+    children.forEach((item) =&gt; {
+        const {checkStatus} = TreeDataMap[item];
+        // 该节点的半选或者勾选为true 
+        if (checkStatus.halfChecked || checkStatus.checked) {
+            halfChecked = true;
+        }
+        // 有一个节点的勾选为false
+        if (!checkStatus.checked) {
+            checked = false;
+        }
+    })
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (checked &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >halfChecked)</span> {
+<span class="cstat-no" title="statement not covered" >        if (halfChain) {</span>
+<span class="cstat-no" title="statement not covered" >            checked = false;</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            halfChecked = false;</span>
+        }
+&nbsp;
+    }
+    return {checked, halfChecked};
+}
+&nbsp;
+/**
+ * [parentChain 设置父节点checkbox状态]
+ * @method parentChain
+ * @param {[HashMap]} TreeDataMap  [以ID为键值的Hash表，方便快速查找]
+ * @param {[Object]}  parentNode   [父节点]
+ * @param {[Object]}  config       [配置]
+ * @param {[Array]}   checkedList  [选中复选框的Value列表]]]
+ * @return {[null]}   null
+ */
+export const parentChain = (TreeDataMap, parentNode, config, checkedList) =&gt; {
+    if (parentNode) {
+        const checkStatus = childCheckedStatus(parentNode.children, TreeDataMap, config)
+        Object.assign(parentNode, {checkStatus});
+&nbsp;
+        // 加入/移除 选中的父节点Value列表
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (checkStatus.checked) {
+<span class="cstat-no" title="statement not covered" >            addMapItem(checkedList, parentNode.value)</span>
+        } else {
+            delMapItem(checkedList, parentNode.value)
+        }
+&nbsp;
+        // 递归
+        <span class="missing-if-branch" title="else path not taken" >E</span>if ("undefined" !== typeof parentNode.parentVal) {
+            parentChain(TreeDataMap, TreeDataMap[parentNode.parentVal], config, checkedList);
+        }
+    }
+}
+&nbsp;
+/**
+ * [childrenChain 设置子节点的checkbox状态]
+ * @method childrenChain
+ * @param {[HashMap]} 	TreeDataMap 	[以ID为键值的Hash表]
+ * @param {[Array]} 	children 	[子节点数组]
+ * @param {[bool]}  	checked  	[checkbox状态]
+ * @param {[Array]}  	checkedList  	[选中复选框的Value列表]]]
+ * @return {[null]}     null
+ */
+export const childrenChain = (TreeDataMap, children, checked, checkedList) =&gt; {
+    if (!children) {
+        // console.log('子节点不存在')
+        return
+    }
+    children.forEach((id) =&gt; {
+        let node = TreeDataMap[id];
+        if (node.disabled) {
+            // 被禁用的无法选中 return
+        } else {
+            node.checkStatus = {
+                checked: checked,
+                halfChecked: false
+            }
+            if (checked) {
+                addMapItem(checkedList, node.value)
+            } else {
+                delMapItem(checkedList, node.value)
+            }
+        }
+        if (node.children) {
+            childrenChain(TreeDataMap, node.children, checked, checkedList);
+        }
+    })
+}
+&nbsp;
+/**
+ * [findAllChildren 查找指定的所有子节点]
+ * @method findAllChildren
+ * @param  {[Array]}   children     [子节点集合]
+ * @param  {[HashMap]} TreeDataMap  [以ID为键值的Hash表，方便快速查找]
+ * @param  {[Array]}  _arr          [递归返回值]
+ * @return {[Array]}  arr          [子节点数组]
+ *
+ */
+export const findAllChildren = (children, treeDataMap, _arr = []) =&gt; {
+    const arr = _arr
+    children.forEach((item) =&gt; {
+        const _item = treeDataMap[item]
+        arr.push(item)
+        if (!isEmptyArray(_item.children)) {
+            findAllChildren(_item.children, treeDataMap, arr)
+        }
+    })
+    return arr
+}
+&nbsp;
+/**
+ * [filterListCheckChildren 搜索功能-过滤列表ID的子节点是否满足搜索条件]
+ * @method filterListCheckChildren
+ * @param  {[Array]}   _children     [子节点集合]
+ * @param  {[HashMap]} treeDataMap   [以ID为键值的Hash表，方便快速查找]
+ * @param  {[String]]}  val            [搜索条件]
+ * @return {[Boolean]}               [true-满足 / false-不满足]
+ *
+ */
+export const filterListCheckChildren = (_children, treeDataMap, val) =&gt; {
+    return _children.some((item) =&gt; {
+        const {title, value, children} = treeDataMap[item];
+        if (title.indexOf(val) &gt; -1) {
+            return true
+        }
+        if (!isEmptyArray(children)) {
+            return filterListCheckChildren(children, treeDataMap, val)
+        }
+        return false
+    })
+}
+&nbsp;
+/**
+ * [getFilterIdList 获取根据搜索条件过滤的id列表]
+ * @method getFilterIdList
+ * @param  {[Array]}    idList                   [源集合]
+ * @param  {[HashMap]}  treeDataMap              [以ID为键值的Hash表，方便快速查找]
+ * @param  {[String]}   val                      [搜索条件]
+ * @param  {[Array]}    filterIdList             [过滤后的列表]
+ * @return {[Array]}    _filterIdList
+ *
+ */
+export const getFilterIdList = (idList, treeDataMap, val, filterIdList = [],) =&gt; {
+    let _filterIdList = filterIdList;
+    idList.forEach((item) =&gt; {
+        const {title, value, children, parentVal} = treeDataMap[item];
+&nbsp;
+        if (title.indexOf(val) &gt; -1 || (!isEmptyArray(children) &amp;&amp; filterListCheckChildren(children, treeDataMap, val))) {
+            // console.log(value)
+&nbsp;
+            if (parentVal) {
+                // 父级展开isExpand
+                treeDataMap[parentVal] = {
+                    ...treeDataMap[parentVal],
+                    isExpand: true
+                }
+            }
+            return _filterIdList.push(value)
+        }
+    })
+    return _filterIdList
+}
+&nbsp;
+/**
+ * [treeDataMapCheckRenderIdList 根据treeDataMap检查RenderIdList中是否有父级不展开的情况]
+ * @method treeDataMapCheckRenderIdList
+ * @param  {[HashMap]}  treeDataMap             [以ID为键值的Hash表，方便快速查找]
+ * @param  {[Array]}    renderIdList            [渲染的IdList]
+ * @return {[Array]}    _renderIdList
+ *
+ */
+export const treeDataMapCheckRenderIdList = (treeDataMap, renderIdList) =&gt; {
+    const _renderIdList = renderIdList.filter((id) =&gt; {
+        const parentVal = treeDataMap[id] &amp;&amp; treeDataMap[id].parentVal
+        if (parentVal) {
+            const parentItem = treeDataMap[parentVal];
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (parentItem &amp;&amp; !parentItem.isExpand) {
+<span class="cstat-no" title="statement not covered" >                return false</span>
+            }
+        }
+        return true
+    })
+    return _renderIdList
+}
+&nbsp;
+/**
+ * [checkedCheckedList 根据checkedList检查树种的勾选]
+ * @method checkedCheckedList
+ * @param  {[HashMap]}  treeDataMap             [以ID为键值的Hash表，方便快速查找]
+ * @param  {[Array]}    checkedList             [勾选的IdList]
+ * @return {[Object]}    checkbox               [配置]
+ *
+ */
+export const checkedCheckedList = (treeDataMap, checkedList, checkbox) =&gt; {
+    // 检查checked的List
+    checkedList.forEach((value) =&gt; {
+        const treeItem = treeDataMap[value]
+        const parentVal = treeItem.parentVal
+        checkbox.parentChain &amp;&amp; parentVal &amp;&amp; _parentChain(treeDataMap, treeDataMap[parentVal], checkbox, checkedList)
+    })
+}
+&nbsp;
+/**
+ * [_parentChain 初始化时设置父节点checkbox状态]
+ * @method _parentChain
+ * @param {[HashMap]} treeDataMap  [以ID为键值的Hash表，方便快速查找]
+ * @param {[Object]}  parentNode   [当前节点]
+ * @return {[null]}   null
+ */
+export const _parentChain = (treeDataMap, parentNode) =&gt; {
+    if (parentNode) {
+        const isHalf = parentNode.children.some((item)=&gt;{
+            const currentNode = treeDataMap[item]
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(currentNode.checkStatus.checked || currentNode.checkStatus.halfChecked){
+                return true
+            }
+<span class="cstat-no" title="statement not covered" >            return false</span>
+        })
+        parentNode.checkStatus.halfChecked = isHalf
+        // 递归
+        <span class="missing-if-branch" title="else path not taken" >E</span>if ("undefined" !== typeof parentNode.parentVal) {
+            _parentChain(treeDataMap, treeDataMap[parentNode.parentVal]);
+        }
+    }
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 17 2018 11:03:57 GMT+0800 (GMT+08:00)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>

@@ -78,11 +78,11 @@ class TreeSelect extends Component {
             
             return {
                 treeData: nextProps.treeData,
-                value: nextProps.value,
+                // value: nextProps.value,
                 treeDataMap: map,
                 idList: idList,
                 renderIdList: renderIdList,
-                selectVal: nextProps.selectVal,
+                selectVal: nextProps.selectVal || '',
                 checkbox: defaultConfig.checkbox,
                 showlevel: defaultConfig.showlevel,
                 checkedList: checkedList,
@@ -384,22 +384,30 @@ class TreeSelect extends Component {
                     ..._style,
                     overflow: 'unset'
                 }}>
-                    <AutoSizer>
-                        {({ height, width }) => (
-                            <List
-                                width={width}
-                                height={height}
-                                rowCount={renderIdList.length}
-                                rowHeight={22}
-                                rowRenderer={this.treeNodeRender}
-                                overscanRowCount={20}
-                                autoContainerWidth={true}
-                                treeDataMap={treeDataMap}
-                                checkedList={checkedList}
-                                selectVal={selectVal}
-                                updateListState={updateListState}
-                                checkbox={checkbox}/>
-                        )}
+                    <AutoSizer >
+                        {({ height, width }) => {
+                            let actualWidth = width;
+                            let actualHeight = height;
+                            if (process.env.NODE_ENV === 'test') {
+                                actualWidth = window.innerWidth;
+                                actualHeight = window.innerHeight;
+                            }
+                            return (
+                                    <List
+                                        width={actualWidth}
+                                        height={actualHeight}
+                                        rowCount={renderIdList.length}
+                                        rowHeight={22}
+                                        rowRenderer={this.treeNodeRender}
+                                        overscanRowCount={20}
+                                        autoContainerWidth={true}
+                                        treeDataMap={treeDataMap}
+                                        checkedList={checkedList}
+                                        selectVal={selectVal}
+                                        updateListState={updateListState}
+                                        checkbox={checkbox}/>
+                                    )
+                        }}
                     </AutoSizer>
                 </div>
             </div>

@@ -1,0 +1,1361 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for index.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> index.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.15% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>98/103</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80.25% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>65/81</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">94.12% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>16/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.1% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>97/102</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {Component} from 'react';
+import {List, AutoSizer} from 'react-virtualized';
+import {
+    isEmptyArray,
+    generateTreeDataMap,
+    delMapItem,
+    childrenChain,
+    parentChain,
+    findAllChildren,
+    getFilterIdList,
+    treeDataMapCheckRenderIdList,
+    checkedCheckedList
+} from './tool';
+import './style/index.css';
+import SearchBox from './searchBox'
+import PropTypes from 'prop-types';
+&nbsp;
+const defaultProps = {
+    style: {
+        width: 320,
+        height: 800,
+        overflow: 'auto'
+    },
+    showlevel: 0,
+    checkbox: {
+        enable: false,
+        parentChain: true,      // 影响父级节点；
+        childrenChain: true,    // 影响子级节点;
+        halfChain: true,        // 即使子级节点被全部选中影响父级节点半选；
+        initCheckedList: []     // 初始化多选数组
+    },
+    prefixClassName: 'do',
+    paddingLeftLevel: 20
+}
+&nbsp;
+class TreeSelect extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            treeData: [],           // 树数据
+            treeDataMap: {},        // 树数据映射表
+            idList: [],             // 所有列表
+            renderIdList: [],       // 渲染的列表
+            checkedList: new Map(), // 勾选的Map列表
+            searchVal: '',          // 搜索的值
+            selectVal: '',          // 选中的条目
+            checkbox: {},           // 复选框的配置
+            showlevel: 0,           // 展开的层级
+            updateListState: false, // 强制更新List组件
+            loading: true           // 加载中。。。
+        }
+        this.treeNodeRender = this
+            .treeNodeRender
+            .bind(this);
+        this.onClickRow = this
+            .onClickRow
+            .bind(this);
+        this.onChecked = this
+            .onChecked
+            .bind(this);
+        this.onSearch = this
+            .onSearch
+            .bind(this);
+        this.cacheIdList = null;
+    }
+&nbsp;
+    static getDerivedStateFromProps(nextProps, prevState) {
+        const defaultConfig = {
+            showlevel: nextProps.showlevel || defaultProps.showlevel,
+            checkbox: nextProps.checkbox || <span class="branch-1 cbranch-no" title="branch not covered" >defaultProps.checkbox</span>
+        }
+        if (nextProps.treeData !== prevState.treeData) {
+            const initCheckedListVal = defaultConfig.checkbox.enable ? defaultConfig.checkbox.initCheckedList.map((item)=&gt;[item.toString(), item.toString()]) : <span class="branch-1 cbranch-no" title="branch not covered" >[]</span>
+            const initCheckedList =  new Map(initCheckedListVal)
+            const {map, idList, renderIdList, checkedList} = generateTreeDataMap({}, nextProps.treeData, defaultConfig, initCheckedList, prevState.checkedList)
+            
+            defaultConfig.checkbox.enable &amp;&amp; checkedCheckedList(map, checkedList, defaultConfig.checkbox)
+            
+            return {
+                treeData: nextProps.treeData,
+                // value: nextProps.value,
+                treeDataMap: map,
+                idList: idList,
+                renderIdList: renderIdList,
+                selectVal: nextProps.selectVal || '',
+                checkbox: defaultConfig.checkbox,
+                showlevel: defaultConfig.showlevel,
+                checkedList: checkedList,
+                loading: false,
+            }
+        }
+        return null
+    }
+    
+<span class="fstat-no" title="function not covered" >    co</span>mponentDidCatch(err) {
+<span class="cstat-no" title="statement not covered" >        console.log(err)</span>
+    }
+&nbsp;
+    /**
+     * [onClickRow 每行节点点击事件回调函数]
+     * @method onClickRow
+     * @param  {[Object]}  item [被点击节点的集合]
+     * @param  {[Event]}   e    [事件]
+     *
+     */
+    onClickRow(item, e) {
+        const {onSelect} = this.props;
+        const {renderIdList, treeDataMap, updateListState} = this.state
+        const {value} = item
+        let _renderIdList = renderIdList.concat([])
+        // const disabled = item.disabled &amp;&amp; (!item.children ||
+        // !isEmptyArray(item.children)) if(disabled) {     return }
+&nbsp;
+        const isExpand = treeDataMap[item.value].isExpand = !treeDataMap[item.value].isExpand
+        if (isExpand) {
+            // 展开
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!isEmptyArray(item.children)) {
+                // 找到这个val在renderIdList中的索引
+                const idx = this.findIdListInValIdx(value, _renderIdList)
+                const _children = item
+                    .children
+                    .concat([])
+                // 在这个val后面插入
+                _children.unshift(idx + 1, 0);
+                Array
+                    .prototype
+                    .splice
+                    .apply(_renderIdList, _children);
+            }
+        } else {
+            // 收缩
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!isEmptyArray(item.children)) {
+                // 找到children的所有子节点
+                let map = new Map()
+&nbsp;
+                _renderIdList.forEach((_item)=&gt;{
+                    map.set(_item, _item)
+                })
+&nbsp;
+                const arr = findAllChildren(item.children, treeDataMap)
+&nbsp;
+                arr.forEach((_item) =&gt; {
+                    treeDataMap[_item].isExpand = false;
+                    map.delete(_item)
+                })
+&nbsp;
+                _renderIdList = Array.from(map.values())
+            }
+        }
+&nbsp;
+        this.setState({
+            renderIdList: _renderIdList,
+            treeDataMap,
+            selectVal: value,
+            updateListState: !updateListState
+        }, () =&gt; {
+            onSelect &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >onSelect(item, e)</span>
+        })
+    }
+&nbsp;
+    /**
+     * [checked 节点的选中情况]
+     * @method checked
+     * @param  {[Object]}  item [被点击节点的集合]
+     * @param  {[Event]}   e    [事件]
+     *
+     */
+    onChecked(item, e) {
+        e &amp;&amp; e.stopPropagation();
+        const {onChecked} = this.props
+        const {treeDataMap, checkedList, updateListState, checkbox} = this.state
+        const {checkStatus, value} = item
+        const {checked} = checkStatus
+        // 判断是否是禁用
+        const disabled = item.disabled
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (disabled) {
+<span class="cstat-no" title="statement not covered" >            return</span>
+        }
+        // 影响性能，直接修改Map值 const _treeDataMap = Object.assign({}, treeDataMap)
+        const _treeDataMap = treeDataMap
+&nbsp;
+        const _checked = !checked;
+        const _checkedList = new Map(checkedList);
+&nbsp;
+        // 处理勾选的value List
+        if (_checked) {
+            _checkedList.set(value, value)
+        } else {
+            delMapItem(_checkedList, value)
+        }
+&nbsp;
+        // 处理treeDataMap的数据状态
+        _treeDataMap[value] = {
+            ..._treeDataMap[value],
+            checkStatus: {
+                ..._treeDataMap[value].checkStatus,
+                checked: _checked,
+                halfChecked: false
+            }
+        }
+&nbsp;
+        // 处理复选框联动逻辑
+        e &amp;&amp; checkbox.parentChain &amp;&amp; parentChain(_treeDataMap, _treeDataMap[item.parentVal], checkbox, _checkedList)
+        e &amp;&amp; checkbox.childrenChain &amp;&amp; childrenChain(_treeDataMap, item.children, _checked, _checkedList)
+        this.setState({
+            treeDataMap: _treeDataMap,
+            checkedList: _checkedList,
+            updateListState: !updateListState
+        }, () =&gt; {
+            e &amp;&amp; onChecked &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >onChecked(Array.from(this.state.checkedList.keys()), e)</span>
+        })
+    }
+&nbsp;
+    // 查找在idList中val的索引
+    findIdListInValIdx(val, idList) {
+        return idList.indexOf(val)
+    }
+&nbsp;
+    // 渲染TreeNode
+    treeNodeRender({
+        index, // Index of row
+        // isScrolling, // The List is currently being scrolled isVisible,   // This row
+        // is visible within the List (eg it is not an overscanned row) key,         //
+        // Unique key within array of rendered rows parent,      // Reference to the
+        // parent List (instance)
+        style // Style object to be applied to row (to position it);
+        // This must be passed through to the rendered row element.
+    }) {
+        const {checkbox, customIconRender, customTitleRender} = this.props
+        const {idList, treeDataMap, renderIdList, selectVal} = this.state
+        const prefixClassName = defaultProps.prefixClassName;
+        const idx = renderIdList[index]
+        const item = treeDataMap[idx];
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!item) 
+<span class="cstat-no" title="statement not covered" >            return</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (item.parentVal &amp;&amp; !treeDataMap[item.parentVal].isExpand) {
+            // 父级节点属性为不展开，子节点不应该显示
+<span class="cstat-no" title="statement not covered" >            throw new Error('this item should not be show')</span>
+        }
+        const _style = {
+            ...style,
+            paddingLeft: (defaultProps.paddingLeftLevel * item.level)
+        }
+        const checkedClassName = item.checkStatus.checked
+            ? `${prefixClassName}-checkbox-checked`
+            : ''
+        const halfCheckedClassName = !item.checkStatus.checked &amp;&amp; item.checkStatus.halfChecked
+            ? `${prefixClassName}-checkbox-halfChecked`
+            : ''
+        const disabled = item.disabled &amp;&amp; (!item.children || <span class="branch-2 cbranch-no" title="branch not covered" >!isEmptyArray(item.children))</span>
+        const isSelectVal = selectVal == item.value
+        const _checkbox = checkbox || <span class="branch-1 cbranch-no" title="branch not covered" >defaultProps.checkbox</span>
+        return (
+            &lt;div
+                key={item.value}
+                style={{
+                ..._style,
+                width: 'auto'
+            }}
+                onClick={(e) =&gt; this.onClickRow(item, e)}
+                className={`${prefixClassName}-TreeNode`}&gt;
+                &lt;div
+                    className={`${prefixClassName}-fadeIn ${item.disabled
+                    ? 'disabled'
+                    : ''}`}&gt;
+                    &lt;div className={`${prefixClassName}-expandIcon`}&gt;
+                        {!isEmptyArray(item.children) &amp;&amp; &lt;i className={`${item.isExpand &amp;&amp; prefixClassName + '-expand'}`}&gt;&lt;/i&gt;
+}
+                    &lt;/div&gt;
+                    {_checkbox.enable &amp;&amp; !disabled &amp;&amp; &lt;div
+                        onClick={(e) =&gt; this.onChecked(item, e)}
+                        className={`${prefixClassName}-checkbox ${checkedClassName} ${halfCheckedClassName}`}&gt;
+                        &lt;span
+                            className={`${prefixClassName}-checkbox-inner ${disabled
+                            ? <span class="branch-0 cbranch-no" title="branch not covered" >'disabled'</span>
+                            : ''}`}&gt;&lt;/span&gt;
+                    &lt;/div&gt;
+}
+                    &lt;div
+                        title={item.title}
+                        className={`${prefixClassName}-title ${isSelectVal
+                        ? 'active'
+                        : ''}`}&gt;
+                        {customTitleRender
+                            ? <span class="branch-0 cbranch-no" title="branch not covered" >customTitleRender(item)</span>
+                            : item.title}
+                    &lt;/div&gt;
+                    &lt;div className={`${prefixClassName}-customIcon`}&gt;
+                        {customIconRender
+                            ? <span class="branch-0 cbranch-no" title="branch not covered" >customIconRender(item)</span>
+                            : ''
+}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+&nbsp;
+    // 搜索框的回调函数
+    onSearch(val) {
+        let _filterIdList;
+        const {idList, treeDataMap, renderIdList, updateListState} = this.state;
+        // 影响性能，直接修改Map值 const _treeDataMap = Object.assign({}, treeDataMap)
+        const _treeDataMap = treeDataMap
+&nbsp;
+        if (!this.cacheIdList) {
+            this.cacheIdList = renderIdList
+        }
+&nbsp;
+        if (val) {
+            _filterIdList = getFilterIdList(idList, _treeDataMap, val)
+        } else {
+            _filterIdList = this.cacheIdList
+            this.cacheIdList = null
+        }
+&nbsp;
+        _filterIdList = treeDataMapCheckRenderIdList(_treeDataMap, _filterIdList)
+&nbsp;
+        this.setState({
+            searchVal: val,
+            renderIdList: _filterIdList,
+            treeDataMap: _treeDataMap,
+            updateListState: !updateListState
+        })
+    }
+&nbsp;
+    render() {
+        const {style, wrapperClassName, checkbox} = this.props;
+        const {
+            treeDataMap,
+            renderIdList,
+            searchVal,
+            checkedList,
+            selectVal,
+            updateListState,
+            loading
+        } = this.state;
+        const _style = style || defaultProps.style;
+        const prefixClassName = defaultProps.prefixClassName;
+        const _className = `${prefixClassName}-TreeSelect ${wrapperClassName || ''}`
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(loading) {
+<span class="cstat-no" title="statement not covered" >            return (</span>
+                &lt;div
+                    className={_className}
+                    style={{
+                    width: _style.width
+                }}&gt;
+                    &lt;div className="spinner"&gt;
+                        &lt;div className="spinner-container container1"&gt;
+                            &lt;div className="circle1"&gt;&lt;/div&gt;
+                            &lt;div className="circle2"&gt;&lt;/div&gt;
+                            &lt;div className="circle3"&gt;&lt;/div&gt;
+                            &lt;div className="circle4"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div className="spinner-container container2"&gt;
+                            &lt;div className="circle1"&gt;&lt;/div&gt;
+                            &lt;div className="circle2"&gt;&lt;/div&gt;
+                            &lt;div className="circle3"&gt;&lt;/div&gt;
+                            &lt;div className="circle4"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div className="spinner-container container3"&gt;
+                            &lt;div className="circle1"&gt;&lt;/div&gt;
+                            &lt;div className="circle2"&gt;&lt;/div&gt;
+                            &lt;div className="circle3"&gt;&lt;/div&gt;
+                            &lt;div className="circle4"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            );
+        }
+        return (
+            &lt;div
+                className={_className}
+                style={{
+                width: _style.width
+            }}&gt;
+                &lt;SearchBox
+                    defaultProps={defaultProps}
+                    searchVal={searchVal}
+                    onSearch={this.onSearch}/&gt;
+                &lt;div
+                    className={`${prefixClassName}-TreeSelectList`}
+                    style={{
+                    ..._style,
+                    overflow: 'unset'
+                }}&gt;
+                    &lt;AutoSizer &gt;
+                        {({ height, width }) =&gt; {
+                            let actualWidth = width;
+                            let actualHeight = height;
+                            <span class="missing-if-branch" title="else path not taken" >E</span>if (process.env.NODE_ENV === 'test') {
+                                actualWidth = window.innerWidth;
+                                actualHeight = window.innerHeight;
+                            }
+                            return (
+                                    &lt;List
+                                        width={actualWidth}
+                                        height={actualHeight}
+                                        rowCount={renderIdList.length}
+                                        rowHeight={22}
+                                        rowRenderer={this.treeNodeRender}
+                                        overscanRowCount={20}
+                                        autoContainerWidth={true}
+                                        treeDataMap={treeDataMap}
+                                        checkedList={checkedList}
+                                        selectVal={selectVal}
+                                        updateListState={updateListState}
+                                        checkbox={checkbox}/&gt;
+                                    )
+                        }}
+                    &lt;/AutoSizer&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+&nbsp;
+// [propTypes 属性类型定义]
+TreeSelect.propTypes = {
+    treeData: PropTypes.array.isRequired,   // 元数据
+    style: PropTypes.object,                // 样式
+    checkbox: PropTypes.object,             // 复选框配置
+    showlevel: PropTypes.number,            // 显示层级
+    selectVal: PropTypes.string,            // 选中的值
+    onSelect: PropTypes.func,               // 选择的回调函数
+    onChecked: PropTypes.func,              // 复选框勾选的回调函数
+    wrapperClassName: PropTypes.string,     // 扩展classname
+    customIconRender: PropTypes.func,       // 自定义扩展Icon渲染
+    customTitleRender: PropTypes.func,      // 自定义标题渲染
+};
+&nbsp;
+export default TreeSelect;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 17 2018 11:03:57 GMT+0800 (GMT+08:00)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>
