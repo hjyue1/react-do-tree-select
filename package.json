@@ -1,10 +1,11 @@
 {
   "name": "react-do-tree-select",
-  "version": "1.2.7",
+  "version": "1.3.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir lib"
+    "build": "babel src --out-dir lib",
+    "test": "jest"
   },
   "author": "hjyue1@163.com",
   "repository": {
@@ -24,7 +25,8 @@
   ],
   "dependencies": {
     "prop-types": "^15.6.2",
-    "react-virtualized": "^9.20.1"
+    "react-virtualized": "^9.20.1",
+    "sinon": "^7.0.0"
   },
   "peerDependencies": {
     "react": "16"
@@ -32,11 +34,15 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "jest": "^23.6.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   }

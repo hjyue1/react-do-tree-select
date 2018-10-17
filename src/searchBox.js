@@ -13,20 +13,13 @@ class SearchBox extends Component {
         this.onInput         = this.onInput.bind(this);
     }
 
-    componentDidCatch(err) {
-        console.log(err)
-    }
-
     clickSearchIcon() {
         this.props.onSearch(this.state.searchVal)
     }
 
-    onKeyDown(e) {
-        const evt = e || window.event ; 
-        if (evt.keyCode === 13){
-            //回车事件
-            this.clickSearchIcon()
-        }
+    onKeyDown(evt) {
+        //回车事件
+        evt.keyCode === 13 && this.clickSearchIcon();
     }
 
     onInput(e) {
