@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1539745437415" clover="3.2.0">
-  <project timestamp="1539745437415" name="All files">
+<coverage generated="1539746092679" clover="3.2.0">
+  <project timestamp="1539746092679" name="All files">
     <metrics statements="236" coveredstatements="223" conditionals="168" coveredconditionals="140" methods="46" coveredmethods="45" elements="450" coveredelements="408" complexity="0" loc="236" ncloc="236" packages="1" files="3" classes="3">
       <file name="index.js" path="/Users/liudong/webstorm/github/react-do-tree-select/src/index.js">
         <metrics statements="102" coveredstatements="97" conditionals="81" coveredconditionals="65" methods="17" coveredmethods="16"/>

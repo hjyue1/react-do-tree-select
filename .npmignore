@@ -1,5 +1,10 @@
 demo
 src
+jest
 README.md
 README-zh_CN.md
 react-do-tree-select.gif
+data.js
+jest.config.js
+package-lock.json
+yarn.lock

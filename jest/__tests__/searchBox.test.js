@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import SearchBox from '../src/searchBox';
+import SearchBox from '../../src/searchBox';
 
 var wrapper,
     searchVal = '',

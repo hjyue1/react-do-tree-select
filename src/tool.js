@@ -10,11 +10,6 @@ export const isEmptyArray = (arr) => {
 
 // 把条目加入Map
 export const addMapItem = (arr, node) => {
-    // 这种写法影响性能
-    // const idx = arr.indexOf(node)
-    // if (idx === -1) {
-    //     arr.push(node);
-    // }
     arr.set(node, node)
 }
 
@@ -44,7 +39,7 @@ export const delMapItem = (map, node) => {
 export const generateTreeDataMap = (parent, treeData, defaultConfig, initCheckedList, _checkedList, level = 0, _map = {}, _idList = [], _renderIdList = []) => {
     const map = _map
     const _level = level
-    const {showlevel, checkbox} = defaultConfig
+    const {showlevel} = defaultConfig
     let idList = _idList
     let renderIdList = _renderIdList
     const checkedList = _checkedList
@@ -93,7 +88,6 @@ export const generateTreeDataMap = (parent, treeData, defaultConfig, initChecked
  * @param  {[Array]}    children        [节点的子节点集合]
  * @param  {[HashMap]}  TreeDataMap     [以ID为键值的Hash表]
  * @param  {[Object]}   checkbox        [配置]
- * @param  {[Bool]}     isInit          [是否初始化时候触发的]
  * @return {[Object]}                   [节点的选中状态]
  *
  */
@@ -217,7 +211,7 @@ export const findAllChildren = (children, treeDataMap, _arr = []) => {
  * @method filterListCheckChildren
  * @param  {[Array]}   _children     [子节点集合]
  * @param  {[HashMap]} treeDataMap   [以ID为键值的Hash表，方便快速查找]
- * @param  {[String]]}  val            [搜索条件]
+ * @param  {[String]]}  val          [搜索条件]
  * @return {[Boolean]}               [true-满足 / false-不满足]
  *
  */

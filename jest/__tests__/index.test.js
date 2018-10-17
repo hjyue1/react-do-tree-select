@@ -2,8 +2,8 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import sinon from 'sinon';
-import Index from '../src/index';
-import treeData from '../data'
+import Index from '../../src/index';
+import treeData from '../../data'
 
 var wrapper;
 beforeAll(() => {
@@ -20,13 +20,9 @@ beforeAll(() => {
 
 describe('<Index />', () => {
     it('renders <Index /> components', () => {
-
         expect(Index.getDerivedStateFromProps.callCount).toEqual(1)
         expect(wrapper.find(`.${defaultProps.prefixClassName}-TreeSelect`)).toHaveLength(1);
         expect(wrapper.find('AutoSizer')).toHaveLength(1);
-
-        // console.log(wrapper.html())
-        // console.log(wrapper.state())
     });
 
     it('simulation of the click', () => {
@@ -42,7 +38,6 @@ describe('<Index />', () => {
         const treeNodeCheckbox_Guangzhou = wrapper.find(`.${defaultProps.prefixClassName}-TreeNode`).at(1)
         treeNodeCheckbox_Guangzhou.simulate('click');
         expect(wrapper.find(`.${defaultProps.prefixClassName}-TreeNode`).at(2).text()).toEqual('越秀区')
-
     })
 
 
@@ -59,7 +54,6 @@ describe('<Index />', () => {
         // 越秀区 复选框
         const treeNodeCheckbox_Yuexiu = wrapper.find(`.${defaultProps.prefixClassName}-checkbox-inner`).at(2)
         treeNodeCheckbox_Yuexiu.simulate('click');
-
     })
 
     it('simulation of the search', ()=>{
@@ -82,7 +76,4 @@ describe('<Index />', () => {
         expect(wrapper.state().searchVal).toBe('');
 
     })
-
-    
-
 });
