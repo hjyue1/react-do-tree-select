@@ -46,6 +46,7 @@ class MyComponent extends React.Component {
             showlevel: 0,
         }
         this.onSelect = this.onSelect.bind(this);
+        this.onExpand = this.onExpand.bind(this);
         this.onChecked = this.onChecked.bind(this);
         this.customTitleRender = this.customTitleRender.bind(this);
     }
@@ -60,6 +61,10 @@ class MyComponent extends React.Component {
     }
 
     onSelect(val, e) {
+        console.log(val);
+    }
+
+    onExpand(val, e) {
         console.log(val);
     }
 
@@ -84,6 +89,7 @@ class MyComponent extends React.Component {
                         style               = {{width: 320,height: 600}}
                         selectVal           = {this.state.selectVal}
                         onSelect            = {this.onSelect}
+                        onExpand            = {this.onExpand}
                         onChecked           = {this.onChecked}
                         checkbox            = {checkbox}
                         showlevel           = {showlevel}
@@ -152,6 +158,7 @@ export default [
 | selectVal | Selected items | string | - |
 | style | Custom style | object | {width: 320, height: 800} |
 | onSelect | Click the event callback function | function( item, event ) | - |
+| onExpand | Icon Click the event callback function | function( item, event ) | - |
 | onChecked | Check the callback function for the event | function( items, event ) | - |
 | customIconRender | The custom icon is extended after the entry | function(item) : DOM | - |
 | customTitleRender | Displays the title of the entry | function(item) : DOM | - |
