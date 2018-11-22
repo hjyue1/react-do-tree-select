@@ -390,7 +390,8 @@ class TreeSelect extends Component {
             <div
                 className={_className}
                 style={{
-                width: _style.width
+                width: _style.width,
+                height: '100%',
             }}>
                 <SearchBox
                     defaultProps={defaultProps}
