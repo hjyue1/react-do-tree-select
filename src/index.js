@@ -9,7 +9,8 @@ import {
     findAllChildren,
     getFilterIdList,
     treeDataMapCheckRenderIdList,
-    checkedCheckedList
+    checkedCheckedList,
+    filterListCheckChildren
 } from './tool';
 import './style/index.css';
 import SearchBox from './searchBox'
@@ -108,7 +109,7 @@ class TreeSelect extends Component {
      */
     onClickRowExpand(item, e) {
         const {onExpand} = this.props;
-        const {renderIdList, treeDataMap, updateListState} = this.state
+        const {renderIdList, treeDataMap, updateListState, searchVal} = this.state
         const {value} = item
         let _renderIdList = renderIdList.concat([])
         // const disabled = item.disabled && (!item.children ||
@@ -120,9 +121,25 @@ class TreeSelect extends Component {
             if (!isEmptyArray(item.children)) {
                 // 找到这个val在renderIdList中的索引
                 const idx = this.findIdListInValIdx(value, _renderIdList)
-                const _children = item
+                let _children = item
                     .children
                     .concat([])
+                // 如果搜索框有值，要过滤一次
+                if(searchVal) {
+                    const arr = findAllChildren(_children, treeDataMap)
+                    // 展开的所有子集中 过滤 满足搜索值 的子集值 从tool.js中getFilterIdList 衍生出来
+                    _children = arr.filter((item)=>{
+                        const {title, value, children} = treeDataMap[item];
+                        if (title.indexOf(searchVal) > -1 || (!isEmptyArray(children) && filterListCheckChildren(children, treeDataMap, searchVal))) {
+                            treeDataMap[value] = {
+                                ...treeDataMap[value],
+                                isExpand: true
+                            }
+                            return true
+                        }
+                        return false
+                    })
+                }
                 // 在这个val后面插入
                 _children.unshift(idx + 1, 0);
                 Array
@@ -247,7 +264,7 @@ class TreeSelect extends Component {
         // This must be passed through to the rendered row element.
     }) {
         const {checkbox, customIconRender, customTitleRender} = this.props
-        const {idList, treeDataMap, renderIdList, selectVal} = this.state
+        const { treeDataMap, renderIdList, selectVal} = this.state
         const prefixClassName = defaultProps.prefixClassName;
         const idx = renderIdList[index]
         const item = treeDataMap[idx];
@@ -268,7 +285,7 @@ class TreeSelect extends Component {
             ? `${prefixClassName}-checkbox-halfChecked`
             : ''
         const disabled = item.disabled && (!item.children || !isEmptyArray(item.children))
-        const isSelectVal = selectVal == item.value
+        const isSelectVal = selectVal === item.value
         const _checkbox = checkbox || defaultProps.checkbox
         return (
             <div

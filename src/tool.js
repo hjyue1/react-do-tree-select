@@ -217,7 +217,7 @@ export const findAllChildren = (children, treeDataMap, _arr = []) => {
  */
 export const filterListCheckChildren = (_children, treeDataMap, val) => {
     return _children.some((item) => {
-        const {title, value, children} = treeDataMap[item];
+        const {title, children} = treeDataMap[item];
         if (title.indexOf(val) > -1) {
             return true
         }
