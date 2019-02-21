@@ -55,6 +55,9 @@ class TreeSelect extends Component {
         this.onClickRow = this
             .onClickRow
             .bind(this);
+        this.onClickRowExpand = this
+            .onClickRowExpand
+            .bind(this);
         this.onChecked = this
             .onChecked
             .bind(this);
@@ -97,14 +100,14 @@ class TreeSelect extends Component {
     }
 
     /**
-     * [onClickRow 每行节点点击事件回调函数]
-     * @method onClickRow
+     * [onClickRowExpand 每行Expand符号节点点击事件回调函数]
+     * @method onClickRowExpand
      * @param  {[Object]}  item [被点击节点的集合]
      * @param  {[Event]}   e    [事件]
      *
      */
-    onClickRow(item, e) {
-        const {onSelect} = this.props;
+    onClickRowExpand(item, e) {
+        const {onExpand} = this.props;
         const {renderIdList, treeDataMap, updateListState} = this.state
         const {value} = item
         let _renderIdList = renderIdList.concat([])
@@ -151,8 +154,25 @@ class TreeSelect extends Component {
         this.setState({
             renderIdList: _renderIdList,
             treeDataMap,
-            selectVal: value,
             updateListState: !updateListState
+        }, () => {
+            onExpand && onExpand(item, e)
+        })
+    }
+
+    /**
+     * [onClickRow 每行节点点击事件回调函数]
+     * @method onClickRow
+     * @param  {[Object]}  item [被点击节点的集合]
+     * @param  {[Event]}   e    [事件]
+     *
+     */
+    onClickRow(item, e) {
+        const {onSelect} = this.props;
+        const {value} = item
+
+        this.setState({
+            selectVal: value,
         }, () => {
             onSelect && onSelect(item, e)
         })
@@ -257,15 +277,13 @@ class TreeSelect extends Component {
                 ..._style,
                 width: 'auto'
             }}
-                onClick={(e) => this.onClickRow(item, e)}
                 className={`${prefixClassName}-TreeNode`}>
                 <div
                     className={`${prefixClassName}-fadeIn ${item.disabled
                     ? 'disabled'
                     : ''}`}>
-                    <div className={`${prefixClassName}-expandIcon`}>
-                        {!isEmptyArray(item.children) && <i className={`${item.isExpand && prefixClassName + '-expand'}`}></i>
-}
+                    <div className={`${prefixClassName}-expandIcon`} onClick={(e) => this.onClickRowExpand(item, e)}>
+                        {!isEmptyArray(item.children) && <i className={`${item.isExpand && prefixClassName + '-expand'}`}></i>}
                     </div>
                     {_checkbox.enable && !disabled && <div
                         onClick={(e) => this.onChecked(item, e)}
@@ -274,9 +292,9 @@ class TreeSelect extends Component {
                             className={`${prefixClassName}-checkbox-inner ${disabled
                             ? 'disabled'
                             : ''}`}></span>
-                    </div>
-}
+                    </div>}
                     <div
+                        onClick={(e) => this.onClickRow(item, e)}
                         title={item.title}
                         className={`${prefixClassName}-title ${isSelectVal
                         ? 'active'
@@ -372,7 +390,8 @@ class TreeSelect extends Component {
             <div
                 className={_className}
                 style={{
-                width: _style.width
+                width: _style.width,
+                height: '100%',
             }}>
                 <SearchBox
                     defaultProps={defaultProps}
@@ -422,7 +441,8 @@ TreeSelect.propTypes = {
     checkbox: PropTypes.object,             // 复选框配置
     showlevel: PropTypes.number,            // 显示层级
     selectVal: PropTypes.string,            // 选中的值
-    onSelect: PropTypes.func,               // 选择的回调函数
+    onSelect: PropTypes.func,               // 选择节点的回调函数
+    onExpand: PropTypes.func,               // 选择Expand符号的回调函数
     onChecked: PropTypes.func,              // 复选框勾选的回调函数
     wrapperClassName: PropTypes.string,     // 扩展classname
     customIconRender: PropTypes.func,       // 自定义扩展Icon渲染

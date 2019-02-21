@@ -45,6 +45,7 @@ class MyComponent extends React.Component {
             showlevel: 0,
         }
         this.onSelect = this.onSelect.bind(this);
+        this.onExpand = this.onExpand.bind(this);
         this.onChecked = this.onChecked.bind(this);
         this.customTitleRender = this.customTitleRender.bind(this);
     }
@@ -59,6 +60,10 @@ class MyComponent extends React.Component {
     }
 
     onSelect(val, e) {
+        console.log(val);
+    }
+
+    onExpand(val, e) {
         console.log(val);
     }
 
@@ -83,6 +88,7 @@ class MyComponent extends React.Component {
                         style               = {{width: 320,height: 600}}
                         selectVal           = {this.state.selectVal}
                         onSelect            = {this.onSelect}
+                        onExpand            = {this.onExpand}
                         onChecked           = {this.onChecked}
                         checkbox            = {checkbox}
                         showlevel           = {showlevel}
@@ -151,6 +157,7 @@ export default [
 | selectVal | 初始化选中的条目 | string | - |
 | style | 自定义样式 | object | {width: 320, height: 800} |
 | onSelect | 条目被点击的回调函数 | function( item, event ) | - |
+| onExpand | 条目展开Icon被点击的回调函数 | function( item, event ) | - |
 | onChecked | 勾选的回调函数 | function( items, event ) | - |
 | customIconRender | 自定义图标，位置在标题后面渲染 | function(item) : DOM | - |
 | customTitleRender | 自定义标题 | function(item) : DOM | - |
