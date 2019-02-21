@@ -387,12 +387,12 @@ body {
 }
 @font-face {
     font-family: doTreeselect;
-    src: url(./static/media/doTreeselect.e153a87a.eot);
-    src: url(./static/media/doTreeselect.e153a87a.eot#iefix)
+    src: url(../media/doTreeselect.e153a87a.eot);
+    src: url(../media/doTreeselect.e153a87a.eot#iefix)
             format('embedded-opentype'),
-        url(./static/media/doTreeselect.cd3e1480.ttf) format('truetype'),
-        url(./static/media/doTreeselect.4574354a.woff) format('woff'),
-        url(./static/media/doTreeselect.9d5a8ca4.svg#doTreeselect) format('svg');
+        url(../media/doTreeselect.cd3e1480.ttf) format('truetype'),
+        url(../media/doTreeselect.4574354a.woff) format('woff'),
+        url(../media/doTreeselect.9d5a8ca4.svg#doTreeselect) format('svg');
     font-weight: 400;
     font-style: normal;
 }
