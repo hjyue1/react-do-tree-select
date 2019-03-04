@@ -129,7 +129,7 @@ body {
 .do-expandIcon i:before {
     display: inline-block;
     margin: 0 10px;
-    content: '';
+    content: "";
     width: 7px;
     height: 7px;
     border: solid #999;
@@ -217,7 +217,7 @@ body {
     border: 2px solid #fff;
     border-top: 0;
     border-left: 0;
-    content: ' ';
+    content: " ";
     -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),
         opacity 0.1s;
     -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
@@ -241,7 +241,7 @@ body {
     border: 2px solid #fff;
     border-top: 0;
     border-left: 0;
-    content: ' ';
+    content: " ";
     -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
     -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
     transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
@@ -389,15 +389,15 @@ body {
     font-family: doTreeselect;
     src: url(../media/doTreeselect.e153a87a.eot);
     src: url(../media/doTreeselect.e153a87a.eot#iefix)
-            format('embedded-opentype'),
-        url(../media/doTreeselect.cd3e1480.ttf) format('truetype'),
-        url(../media/doTreeselect.4574354a.woff) format('woff'),
-        url(../media/doTreeselect.9d5a8ca4.svg#doTreeselect) format('svg');
+            format("embedded-opentype"),
+        url(../media/doTreeselect.cd3e1480.ttf) format("truetype"),
+        url(../media/doTreeselect.4574354a.woff) format("woff"),
+        url(../media/doTreeselect.9d5a8ca4.svg#doTreeselect) format("svg");
     font-weight: 400;
     font-style: normal;
 }
-[class*=' do-icon-'],
-[class^='do-icon-'] {
+[class*=" do-icon-"],
+[class^="do-icon-"] {
     font-family: doTreeselect !important;
     speak: none;
     font-style: normal;
@@ -409,10 +409,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 .do-icon-search:before {
-    content: '\E8B6';
+    content: "\E8B6";
 }
 .do-icon-search2:before {
-    content: '\E908';
+    content: "\E908";
 }
 .do-SearchBox,
 .do-SearchBox-input {
