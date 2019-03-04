@@ -43,20 +43,21 @@ export const generateTreeDataMap = (parent, treeData, defaultConfig, initChecked
     let idList = _idList
     let renderIdList = _renderIdList
     const checkedList = _checkedList
-    
+
     treeData.forEach((item) => {
         const _value = item.value.toString()
         if (map[_value]) {
             throw new Error('The value must be unique')
         }
-        const isExpand = showlevel >= level
-        if (isExpand) {
+
+        const isShow = showlevel >= level
+        if (isShow) {
             renderIdList.push(_value)
-            if (!isEmptyArray(item.children) && showlevel === level) {
-                item
-                    .children
-                    .forEach((_item) => renderIdList.push(_item.value))
-            }
+            // if (!isEmptyArray(item.children) && showlevel === level) {
+            //     item
+            //         .children
+            //         .forEach((_item) => renderIdList.push(_item.value))
+            // }
         }
 
         idList.push(_value)
@@ -65,11 +66,13 @@ export const generateTreeDataMap = (parent, treeData, defaultConfig, initChecked
         map[_value] = {
             ...item,
             level: _level,
-            isExpand,
+            isExpand: showlevel > level,
             checkStatus: {
                 checked: checked,
                 halfChecked: false
             },
+            value: item.value.toString(),
+            title: item.title.toString(),
             parentVal: (parent && parent.value) || null
         }
         if (!isEmptyArray(item.children)) {
