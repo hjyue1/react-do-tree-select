@@ -108,6 +108,7 @@ class TreeSelect extends Component {
      *
      */
     onClickRowExpand(item, e) {
+        e.stopPropagation();
         const {onExpand} = this.props;
         const {renderIdList, treeDataMap, updateListState, searchVal} = this.state
         const {value} = item
@@ -185,6 +186,7 @@ class TreeSelect extends Component {
      *
      */
     onClickRow(item, e) {
+        e.stopPropagation();
         const {onSelect} = this.props;
         const {value} = item
 
