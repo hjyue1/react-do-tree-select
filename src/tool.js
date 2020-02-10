@@ -220,7 +220,11 @@ export const findAllChildren = (children, treeDataMap, _arr = []) => {
  */
 export const filterListCheckChildren = (_children, treeDataMap, val) => {
     return _children.some((item) => {
-        const {title, children} = treeDataMap[item];
+        let {title, children} = treeDataMap[item];
+
+        if (title)
+            title = title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        
         if (title.indexOf(val) > -1) {
             return true
         }
@@ -244,7 +248,13 @@ export const filterListCheckChildren = (_children, treeDataMap, val) => {
 export const getFilterIdList = (idList, treeDataMap, val, filterIdList = [],) => {
     let _filterIdList = filterIdList;
     idList.forEach((item) => {
-        const {title, value, children, parentVal} = treeDataMap[item];
+        let {title, value, children, parentVal} = treeDataMap[item];
+
+        if (title)
+            title = title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        
+        if (val)
+            val = val.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
         if (title.indexOf(val) > -1 || (!isEmptyArray(children) && filterListCheckChildren(children, treeDataMap, val))) {
             // console.log(value)
