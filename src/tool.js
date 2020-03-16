@@ -306,6 +306,7 @@ export const checkedCheckedList = (treeDataMap, checkedList, checkbox) => {
     // 检查checked的List
     checkedList.forEach((value) => {
         const treeItem = treeDataMap[value]
+        if(!treeItem) return
         const parentVal = treeItem.parentVal
         checkbox.parentChain && parentVal && _parentChain(treeDataMap, treeDataMap[parentVal], checkbox, checkedList)
     })
